@@ -75,7 +75,7 @@ $(document).ready(function() {
             'height' : dimH
         });
         
-        var tHtml = '<a href="' + $(this).attr('data-url') + '"><h4>' + $(this).attr('alt') + '</h4></a>';
+        var tHtml = '<a href="' + $(this).attr('data-url') + '" target="_blank"><h4>' + $(this).attr('alt') + '</h4></a>';
         $('#session-tooltip').html(tHtml);
         
     });

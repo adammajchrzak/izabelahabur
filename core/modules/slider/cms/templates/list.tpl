@@ -22,7 +22,7 @@
                 <td nowrap="nowrap">{$tree._created}</td>
                 <td class="align-center"><button class="button compact {if $tree._active =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-active" value="{$tree.slider_id}"></button></td>
                 <td nowrap="nowrap">
-                    <button class="button compact icon-pencil blue-gradient button-edit" onclick="document.location.href = '/cms#/{$router->getUrl('cms','gallery','edit',$tree.slider_id)}'"></button>
+                    <button class="button compact icon-pencil blue-gradient button-edit" onclick="document.location.href = '/cms#/{$router->getUrl('cms','slider','edit',$tree.slider_id)}'"></button>
                     <button class="button compact icon-trash red-gradient button-delete" title="delete" value="{$tree.slider_id}"></button>
                 </td>
             </tr>

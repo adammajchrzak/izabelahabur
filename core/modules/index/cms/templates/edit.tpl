@@ -45,7 +45,7 @@
 					<span class="info-bubble">Adres URL na jaki ma zostać przekierowana strona.</span>
 				</span>	
 			</label>
-			<input type="text" id="content_redirect" name="content_redirect" class="input full-width" value="{$page_details.content_redirect|escape}" />
+			<input type="text" id="content_redirect" name="content_redirect" class="input full-width" value="{$page_details._redirect|escape}" />
 		</p>
 		<p class="inline-large-label button-height">
 			<label class="label">Rozpoczęcie publikacji</label>

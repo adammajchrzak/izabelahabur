@@ -55,7 +55,20 @@ class galleryController extends Engine_Controller	{
 		exit();
 	}
 	
-	public function active() {
+	public function latest() {
+		
+		if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isPostRequest())	{
+			$this->_gallery->latestGallery($_POST);
+		}
+		
+		exit();
+	}
+    
+    public function active() {
 		
 		if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
 			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');

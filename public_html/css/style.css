@@ -86,7 +86,10 @@ body {
     display: block; }
 
 #page-social {
-  padding: 15px 0px 0px 0px; }
+  padding: 15px 0px 0px 0px;
+  width: 75px; }
+  #page-social img {
+    padding: 0px 0px 10px 0px; }
 
 #page-header-row {
   background-image: url(/img/page-header-bg.png);
@@ -106,6 +109,19 @@ body {
 
 #page-picture {
   max-height: 500px; }
+
+#breadcrumbs {
+  margin-top: 15px;
+  font-size: 14px; }
+  #breadcrumbs a {
+    text-decoration: none; }
+  #breadcrumbs a:hover {
+    text-decoration: underline; }
+
+#content-area {
+  margin-top: 40px; }
+  #content-area .text-area {
+    font-size: 16px; }
 
 #portfolio-images {
   margin-top: 10px;

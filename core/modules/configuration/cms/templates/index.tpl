@@ -15,7 +15,7 @@
         <tbody>
             {foreach item = list name = list from=$item_list}
                 <tr>
-                    <th><a href="/{$router->getUrl('cms','configuration','edit',$list.user_id)}">{$list._key}</a></th>
+                    <th><a href="/{$router->getUrl('cms','configuration','edit',$list.id)}">{$list._key}</a></th>
                     <td>{$list._name}</td>
                     <td>{$list._value}</td>
                     <td>{$list._description}</td>

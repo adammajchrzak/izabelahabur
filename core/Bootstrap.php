@@ -6,7 +6,7 @@
  * @author Adam Majchrzak
  * @author jusee.pl
  */
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 class Bootstrap
 {
     private static $_instance = false;

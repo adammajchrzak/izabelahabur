@@ -14,20 +14,19 @@
                     </ul>
                 </li>
                 <li><a href="javascript:;" title="">BLOG</a></li>
-                <li><a href="javascript:;" title="">ABOUT US</a></li>
-                <li><a href="javascript:;" title="">CONTACT</a></li>
+                <li><a href="/{$router->getUrl('index',$router->getItemCode('1',$config->current_locale),'1')}" title="">ABOUT US</a></li>
+                <li><a href="/{$router->getUrl('index',$router->getItemCode('2',$config->current_locale),'2')}" title="">CONTACT</a></li>
             </ul>
         </div>
         <div id="page-social" class="col-lg-1">
-            <ul>
-                <li><a href="javascript:;" title="Instagram Izabela Habur"><img src="" alt="Instagram Izabela Habur" /></a></li>
-                <li><a href="javascript:;" title="Twitter Izabela Habur"><img src="" alt="Twitter Izabela Habur" /></a></li>
-                <li><a href="javascript:;" title="Facebook Izabela Habur"><img src="" alt="Facebook Izabela Habur" /></a></li>
-                <li><a href="javascript:;" title="Google+ Izabela Habur"><img src="" alt="Google+ Izabela Habur" /></a></li>
-                <li><a href="javascript:;" title="Pinterest Izabela Habur"><img src="" alt="Pinterest Izabela Habur" /></a></li>
-                <li><a href="javascript:;" title="Vimeo Izabela Habur"><img src="" alt="Vimeo Izabela Habur" /></a></li>
+            <ul class="list-inline">
+                <li><a href="javascript:;" title="Instagram Izabela Habur"><img src="/img/social/icon.instagram.png" alt="Instagram Izabela Habur" /></a></li>
+                <li><a href="javascript:;" title="Twitter Izabela Habur"><img src="/img/social/icon.twitter.png" alt="Twitter Izabela Habur" /></a></li>
+                <li><a href="javascript:;" title="Facebook Izabela Habur"><img src="/img/social/icon.facebook.png" alt="Facebook Izabela Habur" /></a></li>
+                <li><a href="javascript:;" title="Google+ Izabela Habur"><img src="/img/social/icon.google.png" alt="Google+ Izabela Habur" /></a></li>
+                <li><a href="javascript:;" title="Pinterest Izabela Habur"><img src="/img/social/icon.pinterest.png" alt="Pinterest Izabela Habur" /></a></li>
+                <li><a href="javascript:;" title="Vimeo Izabela Habur"><img src="/img/social/icon.vimeo.png" alt="Vimeo Izabela Habur" /></a></li>
             </ul>
-            <img src="/img/temp-social.png" alt=""/>
         </div>
     </div>
 </div>

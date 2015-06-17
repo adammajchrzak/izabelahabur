@@ -20,8 +20,13 @@ class GalleryModel extends Engine_Model {
 		
 		$select = $this->_db->select()
 								->from(array('cg' => 'cms_gallery'))
+                ->joinLeft(
+                        array('cgc' => 'cms_gallery_category'),
+                        'cgc.category_id = cg.category_id',
+                        array('category_name' => '_name')
+                    )
 								->order('_name')
-								->order('_created DESC');
+								->order('category_name');
 		
 		if($lang_code != '')	{
 			$select->where('cg.lang_code = ?', $lang_code);
@@ -123,7 +128,7 @@ class GalleryModel extends Engine_Model {
     
     public function getRandomPictureFromTags($code)	{
 		
-		print $select = $this->_db->select()
+		$select = $this->_db->select()
                     ->from(array('cgp' => 'cms_gallery_picture'))
                     ->joinLeft(
                         array('cgk' => 'cms_gallery_keyword'),
@@ -149,7 +154,29 @@ class GalleryModel extends Engine_Model {
                     ->order('RAND()')
                     ->limit(20);
         $result = $this->_db->fetchAll($select);
-print_r($result);
+
+        return $result;
+	}
+    
+     public function getRandomPictureFromLatest($code)	{
+		
+		$select = $this->_db->select()
+                    ->from(array('cgp' => 'cms_gallery_picture'))
+                    ->joinLeft(
+                        array('cg' => 'cms_gallery'),
+                        'cgp.gallery_id = cg.gallery_id',
+                        array('category_id', '_code')
+                    )
+                    ->joinLeft(
+                        array('cgc' => 'cms_gallery_category'),
+                        'cgc.category_id = cg.category_id',
+                        array('category_code' => '_code')
+                    )
+                    ->where('cg._latest = ?', 1)
+                    ->order('RAND()')
+                    ->limit(20);
+        $result = $this->_db->fetchAll($select);
+
         return $result;
 	}
     
@@ -199,7 +226,22 @@ print_r($result);
 		return $url;
 	}
 	
-	public function activeGallery($data) {
+	public function latestGallery($data) {
+		
+		$gallery = $this->getGalleryDetails($data['gallery_id']);
+		
+		$gallery['_latest'] == '1' ? $latest = '0' : $latest = '1'; 
+		
+		$update = array(
+				"_latest"	=>	$latest,
+				"_changed"	=>	date("Y-m-d H:i:s")
+		);
+		
+		$this->_db->update("cms_gallery", $update, "gallery_id = '".(int)$data['gallery_id']."'");
+		return true;
+	}
+    
+    public function activeGallery($data) {
 		
 		$gallery = $this->getGalleryDetails($data['gallery_id']);
 		
@@ -214,6 +256,7 @@ print_r($result);
 		return true;
 	}
 	
+    
 	public function addGalleryDetails($data)	{
 		
 		$insert	= array(
@@ -221,8 +264,10 @@ print_r($result);
 			'lang_code'			=>	$data['lang_code'],
             '_code' 			=>	$this->ToSlug($data['_name']),
 			'_name' 			=>	$data['_name'],
+            '_lead'     		=>	$data['_lead'],
 			'_description'		=>	$data['_description'],
             '_link' 			=>	$data['_link'],
+            '_latest'			=>	(int)$data['_latest'],
 			'_active'			=>	(int)$data['_active'],
 			'_created'			=>	date("Y-m-d H:i:s"),
 			'_changed'			=>	date("Y-m-d H:i:s")	
@@ -239,8 +284,10 @@ print_r($result);
             'category_id'  => $data['category_id'],
             '_code' 	   => $this->ToSlug($data['_name']),
 			'_name' 	   => $data['_name'],
+            '_lead'        => $data['_lead'],
 			'_description' => $data['_description'],
             '_link' 	   => $data['_link'],
+            '_latest'	   => (int)$data['_latest'],
 			'_active'	   => (int)$data['_active'],
 			'_changed'	   => date("Y-m-d H:i:s")	
 		);
@@ -315,7 +362,7 @@ print_r($result);
                                         ->joinLeft(
                                             array('ck' => 'cms_keyword'),
                                             'ck.keyword_id = cgk.keyword_id',
-                                            array('_keyword')    
+                                            array('_name','_keyword')    
                                         )
                                         ->where('cgk.gallery_id = ?', (int)$galleryId)
 										->order('_keyword');
@@ -344,7 +391,8 @@ print_r($result);
     public function saveKeyword($keyword)
     {
         $insert = array(
-			"_keyword" => $keyword
+            "_name" => $keyword,
+			"_keyword" => $this->ToSlug($keyword)
 		);
 		
 		$this->_db->insert("cms_keyword", $insert);
@@ -394,6 +442,7 @@ print_r($result);
 				"lang_code"			=>	$data['lang_code'],
 				"_name"				=>	$data['_name'],
 				"_code"				=>	$this->ToSlug($data['_name']),
+                "_title"			=>	$data['_title'],
 				"_description"		=>	$data['_description'],
 				"_active"			=>	@(int)$data['_active'],
 				"_created"			=>	date("Y-m-d H:i:s"),
@@ -410,6 +459,7 @@ print_r($result);
 				"lang_code"			=>	$data['lang_code'],
 				"_name"				=>	$data['_name'],
 				"_code"				=>	$this->ToSlug($data['_name']),
+                "_title"			=>	$data['_title'],
 				"_description"		=>	$data['_description'],
 				"_active"			=>	@(int)$data['_active'],
 				"_changed"			=>	date("Y-m-d H:i:s")

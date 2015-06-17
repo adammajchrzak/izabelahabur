@@ -18,6 +18,10 @@
 			<label class="label">Nazwa kategorii</label>
 			<input type="text" id="_name" name="_name" value="" class="input full-width" />
 		</p>
+                <p class="inline-large-label button-height">
+			<label class="label">Tytuł</label>
+			<input type="text" id="_title" name="_title" value="" class="input full-width" />
+		</p>
 		<p class="inline-large-label button-height">
 			<label class="label">Opis kategorii</label>
 			<textarea id="_description" name="_description" class="input full-width"></textarea>
@@ -29,3 +33,11 @@
 	</fieldset>
 </form>
 </div>
+        
+{literal}
+<script>
+    $(function () {
+        CKEDITOR.replace('_description', { height: '200px'});
+    });
+</script>	
+{/literal}

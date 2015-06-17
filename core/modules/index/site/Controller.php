@@ -109,6 +109,17 @@ class indexController extends Engine_Controller
             if($code === 'tags') {
                 
                 $this->_view->list = $this->_gallery->getRandomPictureFromTags(strtoupper($this->_router->getItemSegments(3)));
+                $this->_view->category = array(
+                    '_title' => $this->_config->const->_page_header->_value, 
+                    '_description' => $this->_config->const->_page_description->_description
+                );
+                $this->_engine->setToRender('portfolio.tpl');
+            } else if ($code === 'latest')  {
+                $this->_view->list = $this->_gallery->getRandomPictureFromLatest(strtoupper($this->_router->getItemSegments(3)));
+                $this->_view->category = array(
+                    '_title' => $this->_config->const->_page_header->_value, 
+                    '_description' => $this->_config->const->_page_description->_description
+                );
                 $this->_engine->setToRender('portfolio.tpl');
             } else {
             
@@ -116,7 +127,6 @@ class indexController extends Engine_Controller
                     $gallery = $this->_gallery->getGalleryDetailsByCode($this->_router->getItemSegments(3));
                     $this->_view->gallery = $gallery;
                     $this->_view->list = $this->_gallery->getPictureForGalleryList($gallery['gallery_id']);
-
 
                     $category = $this->_gallery->getCategoryDetailsByCode($this->_router->getItemSegments(2));
                     $this->_view->category = $category;

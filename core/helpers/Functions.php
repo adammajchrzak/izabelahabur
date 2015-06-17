@@ -77,5 +77,18 @@ class Functions extends Engine_Model 	{
 
 		return $result;
 	}
+    
+    
+    public function getConfiguration()	{
+		
+		$select = $this->_db->select()
+									->from(array('c' => 'cms_configuration'), array('*'))
+									->order('id');
+		
+		$this->_cSelect->setTags(array('core', 'getConfiguration' , 'const'));							
+		$result = $this->_cSelect->fetchAll($select);
+
+		return $result;
+	}
 }
 ?>

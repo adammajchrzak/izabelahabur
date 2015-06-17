@@ -17,6 +17,10 @@
                 <input type="text" id="_name" name="_name" value="{$gallery_details._name}" class="input full-width" />
             </p>
             <p class="inline-large-label button-height">
+                    <label class="label">Opis wstępny</label>
+                    <textarea id="_lead" name="_lead" class="input full-width">{$gallery_details._lead}</textarea>
+            </p>
+            <p class="inline-large-label button-height">
                 <label class="label">Opis galerii</label>
                 <textarea id="_description" name="_description" class="input full-width">{$gallery_details._description}</textarea>
             </p>
@@ -40,6 +44,10 @@
                     <input type="checkbox" id="keywords[]" name="keywords[]" value="{$kw.keyword_id}"{if in_array($kw.keyword_id, $gallery_keywords)} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE"> {$kw._keyword}
                 {/foreach}
                 <input type="text" id="keyword_list" name="keyword_list" value="" class="input full-width" placeholder="wpisz nowe słowa oddzielone przecinkiem" />
+            </p>
+            <p class="inline-large-label button-height">
+                <label class="label">Nowość</label>
+                <input id="_latest" name="_latest" type="checkbox" value="1"{if $gallery_details._latest == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" />
             </p>
             <p class="inline-large-label button-height">
                 <label class="label">Galeria aktywna</label>
@@ -86,8 +94,9 @@
 {literal}
     <script type="text/javascript">
                 $(function () {
-
-                    CKEDITOR.replace('_description');
+                    
+                    CKEDITOR.replace('_lead', { height: '200px'});    
+                    CKEDITOR.replace('_description', { height: '200px'});
 
                     $('#file_upload').uploadify({
                         'swf': '/files4cms/js/uploadify/uploadify.swf',

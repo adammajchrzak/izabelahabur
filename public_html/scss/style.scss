@@ -123,6 +123,10 @@ body {
 
 #page-social {
     padding: 15px 0px 0px 0px;
+    width: 75px;
+    img {
+        padding: 0px 0px 10px 0px;
+    }
 }
 
 #page-header-row {
@@ -150,6 +154,23 @@ body {
     max-height: 500px;
 }
 
+#breadcrumbs {
+    margin-top: 15px;
+    font-size: 14px;
+    a {
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+#content-area {
+    margin-top: 40px;
+    .text-area{
+        font-size: 16px;
+    }
+}
 
 @import 'portfolio';
 @import 'session';

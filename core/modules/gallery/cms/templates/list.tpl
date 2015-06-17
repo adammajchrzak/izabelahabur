@@ -6,7 +6,9 @@
 		<thead>
 			<tr>
 				<th scope="col">Nazwa galerii</th>
+                                <th scope="col">Kategoria</th>
 				<th scope="col" class="one-column align-center">Utworzenie</th>
+                                <th scope="col" class="one-column">Nowość</th>
 				<th scope="col" class="one-column">Aktywność</th>
 				<th scope="col" class="one-column align-center">Operacje</th>
 			</tr>
@@ -16,7 +18,9 @@
 		{foreach item=tree name=tree from=$gallery_list}
 			<tr>
 				<th><a href="/{$router->getUrl('cms','gallery','edit',$tree.gallery_id)}">{$tree._name}</a></th>
+                                <th>{$tree.category_name}</th>
 				<td nowrap="nowrap">{$tree._created}</td>
+                                <td class="align-center"><button class="button compact {if $tree._latest =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-latest" value="{$tree.gallery_id}"></button></td>
 				<td class="align-center"><button class="button compact {if $tree._active =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-active" value="{$tree.gallery_id}"></button></td>
 				<td nowrap="nowrap">
 					<button class="button compact icon-pencil blue-gradient button-edit" onclick="document.location.href='/cms#/{$router->getUrl('cms','gallery','edit',$tree.gallery_id)}'"></button>
@@ -64,6 +68,18 @@ $(function() {
 		});
 	});
 	
+        $(".button-latest").click(function(){
+		$.ajax({
+			type: 'POST',
+			async: false,
+			url: '{/literal}/{$router->getUrl('cms','gallery','latest')}{literal}',
+			data: ( {'gallery_id' : $(this).val()} ),
+			success: function(data) {
+				window.location.reload(); 
+			}
+		});
+	});
+        
 	$(".button-active").click(function(){
 		$.ajax({
 			type: 'POST',
