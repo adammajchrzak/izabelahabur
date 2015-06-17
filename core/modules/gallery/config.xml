@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<configdata>
+	<gallery>
+		<image>
+			<width>1024</width>
+			<height>768</height>
+			<thumbnail_width>100</thumbnail_width>
+			<thumbnail_height>100</thumbnail_height>
+		</image>
+		<upload_dir>var/upload</upload_dir>
+		<gallery_dir>/files/gallery/</gallery_dir>
+	</gallery>
+</configdata>

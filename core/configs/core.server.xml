@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<configdata>
+	<core>
+		<mode>staging</mode>
+		<baseUrl></baseUrl>
+		<suffix></suffix>
+		<sessionName>cms</sessionName>
+		<delimiter>/</delimiter>
+		<default_locale>pl</default_locale>
+		<multi_locale>0</multi_locale>
+		<email_from_name>4people.pl</email_from_name>
+		<email_from_mail>noreply@4people.pl</email_from_mail>
+		<salt>ds78f7asesya63wvdxtgzFFSDR564f</salt>
+		<cache>
+			<timeout>120</timeout>
+		</cache>
+		<pagination>
+			<itemsPerPage>8</itemsPerPage>
+			<pagesInRange>10</pagesInRange>
+		</pagination>
+		<style_base>style.base.css</style_base>
+		<jquery_min>jquery-1.10.2.min.js</jquery_min>
+		<jqueryui>1.8.13.custom</jqueryui>
+		<gallery_dir>/files/gallery/</gallery_dir>		
+		<gallery_max_x>800</gallery_max_x>
+		<gallery_max_y>600</gallery_max_y>
+		<gallery_min_x>100</gallery_min_x>
+		<gallery_min_y>100</gallery_min_y>
+		<upload_dir>var/upload</upload_dir>
+		
+		<meta_data>
+			<title>Nowa inwestycja mieszkaniowa - Kukuczki 7</title>
+			<keywords>Partner Capital Group, Kukuczki 7</keywords>
+			<description></description>
+		</meta_data>
+		
+		<email>
+			<account>noreply@4people.pl</account>
+			<passwd>U1fKURg7@OE</passwd>
+			<server>smtp.4people.pl</server>
+		</email>
+	</core>
+	
+	<production>
+		<database>
+			<adapter>pdo_mysql</adapter>
+			<params>
+				<host>localhost</host>
+				<username>root</username>
+				<password></password>
+				<dbname></dbname>
+				<charset>utf8</charset>
+				<prefix></prefix>
+			</params>
+		</database>
+		<view>
+			<templates_dir>templates</templates_dir>
+			<compile_dir>var/views_c</compile_dir>
+		</view>
+	</production>
+	
+	<staging extends="production">
+		<database>
+			<adapter>pdo_mysql</adapter>
+			<params>
+				<host>1358.m.tld.pl</host>
+				<username>admin1358_kukuczki</username>
+				<password>0DpVB5*c31</password>
+				<dbname>baza1358_kukuczki</dbname>
+				<charset>utf8</charset>
+				<prefix></prefix>
+			</params>
+		</database>
+		<view>
+			<templates_dir>templates</templates_dir>
+			<compile_dir>var/views_c</compile_dir>
+		</view>
+	</staging>
+	
+</configdata>

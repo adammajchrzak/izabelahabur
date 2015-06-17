@@ -1,0 +1,8 @@
+/* Widgets */
+@import url("jquery.ui.datepicker.css");
+@import url("jquery.ui.base.css");
+@import url("jquery.ui.button.css");
+@import url("jquery.ui.core.css");
+
+/* Needed for the colors */
+@import url("colors/jquery.ui.colors.blue.css");
