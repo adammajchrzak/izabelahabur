@@ -44,8 +44,6 @@ class indexController extends Engine_Controller
 
             $this->_view->parent_page = $parent_page;
             $this->_view->breadcrumb = $this->_cms->getPageBreadcrumb((int) $this->_router->getItemSegments(2), $this->_config->current_locale);
-            // $this->_view->submenu	=	$this->_cms->getPagemenu((int)$parent_page['page_id'], '', $this->_config->current_locale);
-            $this->_view->submenu = $this->_cms->getPagemenu((int) $this->_router->getItemSegments(2), '', $this->_config->current_locale);
 
             if ($page_details['_metatitle'] != '') {
                 $this->_head->title = $page_details['_metatitle'];

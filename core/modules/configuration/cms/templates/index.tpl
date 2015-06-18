@@ -33,39 +33,39 @@
 
 {literal}
 <script>
-    $(function () {
-        $(".button-delete").click(function () {
+$(function () {
+    $(".button-delete").click(function () {
 
-            var item_id = $(this).val();
-            $.modal({
-                title: 'Usuwanie wpisu',
-                content: 'Czy jesteś pewny/a, że chcesz usunąć ten wpis? Operacja będzie nieodwracalna!',
-                buttonsAlign: 'center',
-                buttons: {
-                    'usuń': {
-                        classes: 'green-gradient glossy small icon-tick',
-                        click: function (modal) {
-                            $.ajax({
-                                type: 'POST',
-                                async: false,
-                                url: '{/literal}/{$router->getUrl('cms','configuration','delete')}{literal}',
-                                data: ({'id': item_id}),
-                                success: function (data) {
-                                    modal.closeModal();
-                                    window.location.reload();
-                                }
-                            });
-                        }
-                    },
-                    'anuluj': {
-                        classes: 'red-gradient glossy small icon-cross',
-                        click: function (modal) {
-                            modal.closeModal();
-                        }
+        var item_id = $(this).val();
+        $.modal({
+            title: 'Usuwanie wpisu',
+            content: 'Czy jesteś pewny/a, że chcesz usunąć ten wpis? Operacja będzie nieodwracalna!',
+            buttonsAlign: 'center',
+            buttons: {
+                'usuń': {
+                    classes: 'green-gradient glossy small icon-tick',
+                    click: function (modal) {
+                        $.ajax({
+                            type: 'POST',
+                            async: false,
+                            url: '{/literal}/{$router->getUrl('cms','configuration','delete')}{literal}',
+                            data: ({'id': item_id}),
+                            success: function (data) {
+                                modal.closeModal();
+                                window.location.reload();
+                            }
+                        });
+                    }
+                },
+                'anuluj': {
+                    classes: 'red-gradient glossy small icon-cross',
+                    click: function (modal) {
+                        modal.closeModal();
                     }
                 }
-            });
+            }
         });
     });
+});
 </script>	
 {/literal}

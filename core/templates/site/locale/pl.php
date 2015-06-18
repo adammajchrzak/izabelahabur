@@ -13,8 +13,8 @@ $locale['site']['core']['menu']['item09']	=	'Cennik';
 
 $locale['site']['core']['breadcrumb']['item01'] = 'Strona główna';
 
-$locale['site']['core']['nav']['more']						=	"Czytaj więcej >";
-$locale['site']['core']['nav']['back']						=	"powrót";
+$locale['site']['core']['nav']['more']						=	"read more >";
+$locale['site']['core']['nav']['back']						=	"back";
 
 $locale['site']['core']['header']['news'] = 'Aktualności';
 ?>

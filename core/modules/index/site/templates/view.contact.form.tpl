@@ -1,8 +1,8 @@
 <div id="page-header-row" class="row">
     <div id="page-header" class="container">
         <div id="page-slogan">
-            <h2>WELCOME TO MY PORTFOLIO</h2>
-            <div><p>MY NAME IS IZA HABUR I AM STOCK PHOTOGRAPHER WORKING EXCLUSIVE FOR ISTOCKPHOTOS.COM AND GETTY IMAGES.  CHECK OUR PORTFOLIO TO SEE OUR WORK</p></div>
+            <h2>{$const->_page_header->_value}</h2>
+            <div>{$const->_page_description->_description}</div>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
 		{/foreach}
 	</div>
 	<div id="content_header">
-		<h1 class="font_hel_lt">{$parent_page.node_title}</h1>
+            <h1>{$parent_page.node_title}</h1>
 	</div>
 	<div id="content_area">
             <div id="side_area" class="col-lg-6">
@@ -72,62 +72,3 @@
 		</div>
 	</div>
 </div>
-{literal}
-<script type="text/javascript">
-$(document).ready(function () {
-	
-	// Launching validator main contact form
-	$("#main_form").validate({
-		errorPlacement: function(error, element) {
-				error.insertBefore(element);
-		},
-		rules: {
-			firstname: "required",
-			lastname: "required",
-			phone: {
-				required: true,
-				phonePL: true
-			},
-			email: {
-				required: true,
-				email: true
-			},
-			message: "required",
-		},
-		messages: {
-			firstname: "{/literal}{$locale.site.index.contact.form.required}{literal}",
-			lastname: "{/literal}{$locale.site.index.contact.form.required}{literal}",
-			phone: {
-				required: "{/literal}{$locale.site.index.contact.form.required}{literal}",
-				phonePL: "{/literal}{$locale.site.index.contact.form.correct}{literal}"
-			},
-			email: {
-				required: "{/literal}{$locale.site.index.contact.form.required}{literal}",
-				email: "{/literal}{$locale.site.index.contact.form.correct}{literal}"
-			},
-			message: "{/literal}{$locale.site.index.contact.form.required}{literal}",
-		},
-		submitHandler: function() {
-			$.ajax({
-				url 	: '/pl/forms/send',
-				global 	: false,
-				type	: 'POST',
-				data	: ({
-					'contact-name' 		: $('#firstname').val() + ' ' + $('#lastname').val(),
-					'contact-phone' 	: $('#phone').val(),
-					'contact-email'		: $('#email').val(),
-					'contact-message'	: $('#message').val()
-				}),
-				async	: false,
-				success	: function(){
-					_gaq.push(['_trackPageview', '/kontaktwyslany.html']);
-					$("#main_form").children().hide(300);
-					setTimeout(function(){$("#thankyou").show(300);},300)  
-				}
-			});
-		}
-	});
-});	
-	
-</script>
-{/literal}

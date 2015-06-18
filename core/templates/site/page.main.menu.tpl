@@ -1,9 +1,9 @@
 <div id="page-top-row" class="row">
     <div id="page-top" class="container">
-        <div id="page-logo" class="col-lg-4">
+        <div id="page-logo" class="col-lg-4 col-md-4 col-sm-12 text-left">
             <a href="/" title="Izabela Habur Photographer :: portfolio"><img src="/img/page-logo.png" alt="Izabela Habur Photographer :: portfolio"/> <h3>HABUR IMAGES</h3></a>
         </div>
-        <div id="page-menu" class="col-lg-7 text-right">
+        <div id="page-menu" class="col-lg-7 col-md-7 col-sm-12 text-right">
             <ul class="list-inline">
                 <li>
                     <a href="javascript:;" title="">PORTFOLIO</a>
@@ -13,12 +13,12 @@
                     {/foreach}
                     </ul>
                 </li>
-                <li><a href="javascript:;" title="">BLOG</a></li>
+                <li><a href="/news" title="">BLOG</a></li>
                 <li><a href="/{$router->getUrl('index',$router->getItemCode('1',$config->current_locale),'1')}" title="">ABOUT US</a></li>
                 <li><a href="/{$router->getUrl('index',$router->getItemCode('2',$config->current_locale),'2')}" title="">CONTACT</a></li>
             </ul>
         </div>
-        <div id="page-social" class="col-lg-1">
+        <div id="page-social" class="col-lg-1 col-md-1 hidden-sm hidden-xs text-right">
             <ul class="list-inline">
                 <li><a href="javascript:;" title="Instagram Izabela Habur"><img src="/img/social/icon.instagram.png" alt="Instagram Izabela Habur" /></a></li>
                 <li><a href="javascript:;" title="Twitter Izabela Habur"><img src="/img/social/icon.twitter.png" alt="Twitter Izabela Habur" /></a></li>

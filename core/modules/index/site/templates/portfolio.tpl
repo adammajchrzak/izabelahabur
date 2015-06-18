@@ -1,8 +1,8 @@
 <div id="page-header-row" class="row">
     <div id="page-header" class="container">
         <div id="page-slogan">
-            <h2>{$category._title}</h2>
-            <div>{$category._description}</div>
+            <h2>{$category._title|upper}</h2>
+            <div>{$category._description|upper}</div>
         </div>
     </div>
 </div>
@@ -12,7 +12,7 @@
             <img src="/img/portfolio/thumb-01.png" alt="CHECK OUR LATEST PRODUCTION >>" data-url="/index/portfolio/latest" class="box" id="portfolio-box1" />
             <img src="/img/portfolio/thumb-02.png" alt="FEATURED >>"  data-url="http://www.onet2.pl" class="box" id="portfolio-box2" />
         {foreach $list as $item}
-            <img src="{$item.file_dir}/large/{$item.file_name}" alt="SHOW GALLERY >>" data-url="/index/portfolio/{$item.category_code}/{$item._code}" class="gray"/>
+            <img src="{$item.file_dir}/large/{$item.file_name}" alt="{$item._name|upper} >>" data-url="/index/portfolio/{$item.category_code}/{$item._code}" class="gray"/>
         {/foreach}
         </section>
     </div>

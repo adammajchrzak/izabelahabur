@@ -1,5 +1,5 @@
 <div class="with-padding">
-	<h2 class="thin float-left">Lista aktualności</h2>
+	<h2 class="thin float-left">Lista wpisów</h2>
 	<div class="float-right"><button onclick="document.location.href='/cms#/{$router->getUrl('cms','news','add')}'" class="button button-add-text"><span class="button-icon green-gradient"><span class="icon-star"></span></span>dodaj</button></div>
 	<div class="table-header clear-both"></div>
 	<table class="table">
@@ -38,7 +38,7 @@ $(function() {
 		var item_id = $(this).val();
 		$.modal({
 			title: 'Usuwanie zawartości',
-			content: 'Czy jesteś pewny/a, że chcesz usunąć tę aktualność? Operacja będzie nieodwracalna!',
+			content: 'Czy jesteś pewny/a, że chcesz usunąć ten wpis? Operacja będzie nieodwracalna!',
 
 			buttonsAlign: 'center',
 			buttons:{

@@ -2,7 +2,7 @@
     <div id="page-header" class="container">
         <div id="page-slogan">
             <h2>{$gallery._name|upper}</h2>
-            <div>{$gallery._lead}</div>
+            <div>{$gallery._lead|upper}</div>
         </div>
     </div>
 </div>
@@ -28,7 +28,7 @@
             <div class="clearfix"></div>
             <div id="content-area" style="margin-bottom: 50px;">
                 <h2>{$gallery._name}</h2>
-                <div class="text-area">{$gallery._description}</div>
+                <div class="text-area">{$gallery._description|upper}</div>
             </div> 
             <div class="clearfix"></div>
         </div>

@@ -1,7 +1,7 @@
 <div class="with-padding">
 <form id="form-edit-news" name="form-edit-news" method="post" action="/{$router->getUrl('cms','news','edit')}">
 	
-	<h2 class="thin float-left">Edytuj aktualność</h2>
+	<h2 class="thin float-left">Edytuj wpis</h2>
 	
 	<div class="float-right">
 		<button type="submit" class="button glossy mid-margin-right"><span class="button-icon"><span class="icon-tick"></span></span>zapisz zmiany</button>
@@ -15,18 +15,18 @@
 	<h3 class="thin underline clear-both">Dane podstawowe</h3>
 	<fieldset class="fieldset fields-list">
 		<p class="inline-large-label button-height">
-			<label class="label">Tytuł aktualności</label>
+			<label class="label">Tytuł wpisu</label>
 			<input type="text" id="_title" name="_title" value="{$news_details._title|escape}" class="input full-width" />
 		</p>
 		<p class="inline-large-label button-height">
-			<label class="label">Data publikacji aktualności</label>
+			<label class="label">Data publikacji wpisu</label>
 			<span class="input">
 				<span class="icon-calendar"></span>
 				<input type="text" id="_publish" name="_publish" value="{$news_details._publish|escape}" class="input-unstyled datepicker" />
 			</span>
 		</p>
 		<p class="inline-large-label button-height">
-			<label class="label">Kategoria wydarzenia</label>
+			<label class="label">Kategoria wpisu</label>
 			<select id="category_id" name="category_id" class="select check-list">
 				<option value="0">-- wybierz z listy --</option>
 				{foreach from=$category_list item=cl}
@@ -36,10 +36,10 @@
 		</p>	
 	</fieldset>
 	
-	<h3 class="thin underline">Treść aktualności</h3>
+	<h3 class="thin underline">Treść wpisu</h3>
 	<fieldset class="fieldset fields-list">
 		<p class="inline-large-label button-height">
-			<label class="label">Lead aktualności</label>
+			<label class="label">Lead wpisu</label>
 			<textarea id="_lead" name="_lead" class="input full-width">{$news_details._lead|escape}</textarea>
 		</p>
 		<p class="inline-large-label button-height">
@@ -51,7 +51,7 @@
 	<h3 class="thin underline">Ustawienia zaawansowane</h3>
 	<fieldset class="fieldset fields-list">
 		<p class="inline-large-label button-height">
-			<label class="label">Aktualność aktywna</label>
+			<label class="label">Wpis aktywny</label>
 			<input id="_active" name="_active" type="checkbox" value="1"{if $news_details._active == '1'} checked{/if} class="switch" data-text-on="TAK" data-text-off="NIE" />
 		</p>
 		<p class="inline-large-label button-height">
@@ -61,15 +61,6 @@
 		<p class="inline-large-label button-height">
 			<label class="label">{$locale.cms.news.add.field003.l3}</label>
 			<input id="_picture" name="_picture" type="text" value="{$news_details._picture}" class="input full-width"/>
-		</p>
-		<p class="inline-large-label button-height">
-			<label class="label">Galeria</label>
-			<select id="gallery_id" name="gallery_id" class="select check-list">
-				<option value="0">-- wybierz z listy --</option>
-				{foreach from=$gallery_list item=gl}
-				<option value="{$gl.gallery_id}"{if $news_details.gallery_id == $gl.gallery_id} selected{/if}>{$gl._name}</option>
-				{/foreach}
-			</select>
 		</p>
 	</fieldset>
 	
@@ -100,7 +91,7 @@
 $(function() {
 	$( ".datepicker" ).datepicker($.datepicker.regional[ "pl" ]);
 	
-	CKEDITOR.replace( '_content' );
+	CKEDITOR.replace( '_content', {height : '200px'} );
 	
 	$('#_picture').on('click', function(event){
 		window.SetUrl=(function(id){

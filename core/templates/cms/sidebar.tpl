@@ -27,35 +27,9 @@
                 <li><a href="/{$router->getUrl('cms','index','tree')}" title="Lista stron">Lista stron</a></li>
                 <li class="title-menu">Moduły</li>
                 <li class="with-right-arrow">
-                    <span>Cennik</span>
+                    <span>Blog</span>
                     <ul class="big-menu">
-                        <li class="title-menu">Lista lokali</li>
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','price',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                        <li class="title-menu">Piętra</li>  
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','price','category',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                    </ul>
-                </li>
-                <li class="with-right-arrow">
-                    <span>Załaczniki</span>
-                    <ul class="big-menu">
-                        <li class="title-menu">Lista lokali</li>
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','attachment',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                        <li class="title-menu">Piętra</li>  
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','price','category',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                    </ul>
-                </li>
-                <li class="with-right-arrow">
-                    <span>Aktualności</span>
-                    <ul class="big-menu">
-                        <li class="title-menu">Lista aktualności</li>
+                        <li class="title-menu">Lista wpisów</li>
                             {foreach from=$locale_list item=ll}
                             <li><a href="/{$router->getUrl('cms','news',$ll.lang_code)}">{$ll.lang_name}</a></li>
                             {/foreach}

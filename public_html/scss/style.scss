@@ -30,7 +30,9 @@
 }
 
 $font-basic: 'DINRoundPro';
+$font-basic-black: 'DINRoundProBlack';
 $font-basic-bold: 'DINRoundProBold';
+$font-basic-medium: 'DINRoundProMedium';
 
 html {
     position: relative;
@@ -75,14 +77,16 @@ body {
 }
 
 #page-logo {
-    padding: 30px 0px 0px 30px;
     a {
         text-decoration: none;
         color: #000000;
+        img {
+            float: left;
+            margin-right: 10px;
+        }
         h3 {
-            font-size: 36px;
-            font-weight: 800;
-            float: right;
+            font-family: $font-basic-black;
+            float: left;
             padding: 0px;
             margin: 0px;
         }
@@ -90,14 +94,14 @@ body {
 }
 
 #page-menu {
-    padding: 45px 30px 0px 0px;
+    padding: 40px 30px 0px 0px;
     li {
         margin: 0px;
         margin-left: 10px;
         padding: 0px;
         font-size: 24px;
         line-height: 28px;
-        font-weight: 400;
+        font-family: $font-basic-medium;
         a {
             color: #000000;
         }
@@ -123,7 +127,7 @@ body {
 
 #page-social {
     padding: 15px 0px 0px 0px;
-    width: 75px;
+    width: 70px;
     img {
         padding: 0px 0px 10px 0px;
     }
@@ -151,7 +155,6 @@ body {
 }
 
 #page-picture {
-    max-height: 500px;
 }
 
 #breadcrumbs {
@@ -167,6 +170,7 @@ body {
 
 #content-area {
     margin-top: 40px;
+    margin-bottom: 50px;
     .text-area{
         font-size: 16px;
     }
@@ -174,3 +178,5 @@ body {
 
 @import 'portfolio';
 @import 'session';
+@import 'news';
+@import 'responsive'

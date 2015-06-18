@@ -111,7 +111,7 @@ class GalleryModel extends Engine_Model {
                     ->joinLeft(
                         array('cg' => 'cms_gallery'),
                         'cgp.gallery_id = cg.gallery_id',
-                        array('category_id', '_code')
+                        array('category_id', '_code', '_name')
                     )
                     ->joinLeft(
                         array('cgc' => 'cms_gallery_category'),
