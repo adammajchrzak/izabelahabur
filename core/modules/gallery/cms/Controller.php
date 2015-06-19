@@ -80,7 +80,22 @@ class galleryController extends Engine_Controller	{
 		
 		exit();
 	}
+    
+    
+    public function gmove()
+    {
+        if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isAjaxRequest())	{
+			$this->_gallery->moveGalleryInStructure($_REQUEST);
+		}
+		
+		exit();
+    }
 	
+    
 	public function add()	{
 		
 		if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'add'))	{
@@ -371,6 +386,20 @@ class galleryController extends Engine_Controller	{
 		
 		exit();
 	}
+    
+    
+    public function cmove()
+    {
+        if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isAjaxRequest())	{
+			$this->_gallery->moveCategoryInStructure($_REQUEST);
+		}
+		
+		exit();
+    }
 	
 	
 	public function cadd()	{

@@ -9,6 +9,7 @@
                 <th scope="col">Nazwa</th>
                 <th scope="col">Link</th>
                 <th scope="col" class="one-column align-center">Utworzenie</th>
+                <th scope="col" class="one-column">Kolejność</th>
                 <th scope="col" class="one-column">Aktywność</th>
                 <th scope="col" class="one-column align-center">Operacje</th>
             </tr>
@@ -20,6 +21,10 @@
                 <td><a href="/{$router->getUrl('cms','slider','edit',$tree.slider_id)}">{$tree._name}</a></td>
                 <td><a href="{$tree._link}" target="_blank">{$tree._link}</a></td>
                 <td nowrap="nowrap">{$tree._created}</td>
+                <td nowrap="nowrap">
+                    <button class="button compact green-gradient button-move-down" title="DOWN" value="{$tree.slider_id}"><span class="icon-down-fat"></span></button>
+                    <button class="button compact green-gradient button-move-up" title="UP" value="{$tree.slider_id}"><span class="icon-up-fat"></span></button>
+                </td>
                 <td class="align-center"><button class="button compact {if $tree._active =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-active" value="{$tree.slider_id}"></button></td>
                 <td nowrap="nowrap">
                     <button class="button compact icon-pencil blue-gradient button-edit" onclick="document.location.href = '/cms#/{$router->getUrl('cms','slider','edit',$tree.slider_id)}'"></button>
@@ -78,6 +83,34 @@
                     window.location.reload();
                 }
             });
+        });
+        
+        $(".button-move-up").click(function(){
+		
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: '{/literal}/{$router->getUrl($config->module_type,$config->module,'move')}{literal}',
+                data: ( {'item_id' : $(this).val(), 'direction' : $(this).attr('title')} ),
+                success: function(data) {
+                window.location.reload();
+                }
+            });
+            return false;
+        });
+
+        $(".button-move-down").click(function(){
+
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: '{/literal}/{$router->getUrl($config->module_type,$config->module,'move')}{literal}',
+                data: ( {'item_id' : $(this).val(), 'direction' : $(this).attr('title')} ),
+                success: function(data) {
+                window.location.reload();
+                }
+            });
+            return false;
         });
     });
 </script>	

@@ -66,6 +66,20 @@ class sliderController extends Engine_Controller	{
 		
 		exit();
 	}
+    
+    
+    public function move()
+    {
+        if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isAjaxRequest())	{
+			$this->_slider->moveSliderInStructure($_REQUEST);
+		}
+		
+		exit();
+    }
 	
 	public function add()	{
 		

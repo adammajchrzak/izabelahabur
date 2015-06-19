@@ -9,6 +9,7 @@
         </div>
 
         <input type="hidden" id="gallery_id" name="gallery_id" value="{$gallery_details.gallery_id}">
+        <input type="hidden" id="lang_code" name="lang_code" value="{$gallery_details.lang_code}">
 
         <h3 class="thin underline clear-both">Dane podstawowe</h3>	
         <fieldset class="fieldset fields-list">

@@ -20,8 +20,7 @@ class SliderModel extends Engine_Model {
 		
 		$select = $this->_db->select()
 								->from(array('cs' => 'cms_slider'))
-								->order('_name')
-								->order('_created DESC');
+								->order('_order');
 		
 		if($lang_code != '')	{
 			$select->where('cs.lang_code = ?', $lang_code);
@@ -69,6 +68,48 @@ class SliderModel extends Engine_Model {
 		$this->_db->update("cms_slider", $update, "slider_id = '".(int)$data['slider_id']."'");
 		return true;
 	}
+    
+    
+    public function moveSliderInStructure($data)
+    {
+		$select = $this->_db->select()
+                ->from(array('cs' => 'cms_slider'))
+                ->order('cs._order');
+        
+		$result = $this->_db->fetchAll($select);
+		$y = '0';
+		
+		$beforePage	= array();
+		$afterPage	= array();
+		
+		foreach ($result as $key=>$value)	{
+			if($result[$key]['slider_id'] == $data['item_id'])	{
+				$y = 1;
+			}	elseif ($y == '0')	{
+				array_push($beforePage, $result[$key]['slider_id']);
+			}	else {
+				array_push($afterPage, $result[$key]['slider_id']);
+			}
+		}
+		
+		if($data['direction'] == 'UP')	{
+			array_unshift($afterPage, array_pop($beforePage));
+		}	else {
+			array_push($beforePage, array_shift($afterPage));
+		}
+		
+		array_push($beforePage, $data['item_id']);
+		$pagesList = array_merge($beforePage, $afterPage);
+		
+		$_order = 10;
+		foreach ($pagesList as $key=>$value)	{
+			
+			$this->_db->update("cms_slider", array('_order' => $_order, '_changed' => date('Y-m-d H:i:s')), "slider_id='".$value."'");
+			$_order += 10; 
+		}
+		
+		return true;
+    }
 	
 	public function addItemDetails($data)
     {	
