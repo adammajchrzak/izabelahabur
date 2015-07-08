@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
     
     $('.carousel').carousel({
-        interval: 2000
+        interval: 4000
     });
     
     $('#portfolio-images img.gray').addClass('grayscale');
@@ -30,7 +30,7 @@ $(document).ready(function() {
             'display': 'inline',
             'position': 'absolute',
             'top' : parseInt(id.top + dimH - 50) + 'px',
-            'left' : parseInt(id.left+3) + 'px',
+            'left' : parseInt(id.left + 1) + 'px',
             'width' : dimW
         });
         
@@ -53,8 +53,8 @@ $(document).ready(function() {
         
         $('#' + $(this).attr('id') + '-tooltip').css({
             'position': 'absolute',
-            'top' : parseInt(id.top + dimH - 70) + 'px',
-            'left' : parseInt(id.left+3) + 'px',
+            'top' : parseInt(id.top - 10) + 'px',
+            'left' : parseInt(id.left + 16) + 'px',
             'width' : dimW,
             'padding' : '10px'
         });
@@ -74,7 +74,7 @@ $(document).ready(function() {
             'display': 'block',
             'position': 'absolute',
             'top' : parseInt(id.top) + 'px',
-            'left' : parseInt(id.left+3) + 'px',
+            'left' : parseInt(id.left+1) + 'px',
             'width' : dimW,
             'height' : dimH
         });

@@ -98,11 +98,17 @@ class indexController extends Engine_Controller
     public function portfolio ()
     {
         
+        $page_details = array('node_code' => 'portfolio');
+        
         $this->_view->submenu = $this->_gallery->getGalleryCategoryList('pl', 1);
         
         if ($this->_router->getItemSegments(2)) {           
             
             $code = $this->_router->getItemSegments(2);
+            
+            $page_details['_code'] = $code;
+            
+            $this->_view->page_details = $page_details;
             
             if($code === 'tags') {
                 
@@ -119,6 +125,15 @@ class indexController extends Engine_Controller
                     '_description' => $this->_config->const->_page_description->_description
                 );
                 $this->_engine->setToRender('portfolio.tpl');
+                
+            } else if ($code === 'featured')  {
+                $this->_view->list = $this->_gallery->getRandomPictureFromFeatured(strtoupper($this->_router->getItemSegments(3)));
+                $this->_view->category = array(
+                    '_title' => $this->_config->const->_page_header->_value, 
+                    '_description' => $this->_config->const->_page_description->_description
+                );
+                $this->_engine->setToRender('portfolio.tpl');
+                
             } else {
             
                 if($this->_router->getItemSegments(3)) {
@@ -140,7 +155,6 @@ class indexController extends Engine_Controller
                     $this->_engine->setToRender('portfolio.tpl');
                 }
             }
-            
         }
     }
 }

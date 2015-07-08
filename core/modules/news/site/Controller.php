@@ -30,9 +30,9 @@ class newsController extends Engine_Controller	{
 	
 	public function index()	{
 		
-		$parent_page			  =	$this->_cms->getPageRoot('2', $this->_config->current_locale);
-		$this->_view->parent_page =	$parent_page;
-		$this->_view->breadcrumb  =	$this->_cms->getPageBreadcrumb('2', $this->_config->current_locale);
+		$this->_view->page_details = array('node_code' => 'news');
+        
+        $this->_view->breadcrumb  =	$this->_cms->getPageBreadcrumb('2', $this->_config->current_locale);
 		$this->_view->submenu     = $this->_gallery->getGalleryCategoryList('pl', 1);
 		
 		if(is_numeric($this->_router->getItemSegments(2))){

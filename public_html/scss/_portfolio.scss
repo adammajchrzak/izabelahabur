@@ -15,7 +15,7 @@
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
-  padding: 0px 3px 10px 3px;
+  padding: 0px 10px 10px 0px;
   cursor: pointer;
 }
 
@@ -35,15 +35,15 @@
     display: block;
     width: 240px;
     height: 50px;
-    background-color: #b14057;
-    opacity: 0.7;
+    background-color: #d1334c;
+    opacity: 0.9;
     color: #ffffff;
     a {
         color: #ffffff;
         h4 {
             font-family: $font-basic-bold;
-            font-size: 13px;
-            padding: 10px 0px 0px 5px;
+            font-size: 18px;
+            padding: 7px 0px 0px 20px;
         }
     }
 }

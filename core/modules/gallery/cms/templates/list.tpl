@@ -9,7 +9,8 @@
                                 <th scope="col">Kategoria</th>
 				<th scope="col" class="one-column align-center">Utworzenie</th>
                                 <th scope="col" class="one-column">Kolejność</th>
-                                <th scope="col" class="one-column">Nowość</th>
+                                <th scope="col" class="one-column">Featured</th>
+                                <th scope="col" class="one-column">Lastest</th>
 				<th scope="col" class="one-column">Aktywność</th>
 				<th scope="col" class="one-column align-center">Operacje</th>
 			</tr>
@@ -25,6 +26,7 @@
                         <button class="button compact green-gradient button-move-down" title="DOWN" value="{$tree.gallery_id}"><span class="icon-down-fat"></span></button>
                         <button class="button compact green-gradient button-move-up" title="UP" value="{$tree.gallery_id}"><span class="icon-up-fat"></span></button>
                     </td>
+                    <td class="align-center"><button class="button compact {if $tree._featured =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-featured" value="{$tree.gallery_id}"></button></td>
                     <td class="align-center"><button class="button compact {if $tree._latest =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-latest" value="{$tree.gallery_id}"></button></td>
                     <td class="align-center"><button class="button compact {if $tree._active =='1'}icon-tick green-gradient{else}icon-cross red-gradient{/if} button-active" value="{$tree.gallery_id}"></button></td>
                     <td nowrap="nowrap">
@@ -78,6 +80,18 @@ $(function() {
                 type: 'POST',
                 async: false,
                 url: '{/literal}/{$router->getUrl('cms','gallery','latest')}{literal}',
+                data: ( {'gallery_id' : $(this).val()} ),
+                success: function(data) {
+                    window.location.reload(); 
+                }
+            });
+	});
+        
+        $(".button-featured").click(function(){
+            $.ajax({
+                type: 'POST',
+                async: false,
+                url: '{/literal}/{$router->getUrl('cms','gallery','featured')}{literal}',
                 data: ( {'gallery_id' : $(this).val()} ),
                 success: function(data) {
                     window.location.reload(); 

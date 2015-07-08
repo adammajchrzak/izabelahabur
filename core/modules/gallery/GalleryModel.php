@@ -181,6 +181,30 @@ class GalleryModel extends Engine_Model
         return $result;
     }
     
+    
+    public function getRandomPictureFromFeatured($code)
+    {
+        $select = $this->_db->select()
+                    ->from(array('cgp' => 'cms_gallery_picture'))
+                    ->joinLeft(
+                        array('cg' => 'cms_gallery'),
+                        'cgp.gallery_id = cg.gallery_id',
+                        array('category_id', '_code', '_name')
+                    )
+                    ->joinLeft(
+                        array('cgc' => 'cms_gallery_category'),
+                        'cgc.category_id = cg.category_id',
+                        array('category_code' => '_code')
+                    )
+                    ->where('cg._featured = ?', 1)
+                    ->order('RAND()')
+                    ->limit(20);
+        $result = $this->_db->fetchAll($select);
+
+        return $result;
+    }
+    
+    
     public function getGalleryCategoryList($lang_code = '', $_active = '')
     {
         $select = $this->_db->select()
@@ -236,6 +260,21 @@ class GalleryModel extends Engine_Model
         
         $update = array(
                 "_latest"    =>    $latest,
+                "_changed"    =>    date("Y-m-d H:i:s")
+        );
+        
+        $this->_db->update("cms_gallery", $update, "gallery_id = '".(int)$data['gallery_id']."'");
+        return true;
+    }
+    
+    public function featuredGallery($data)
+    {
+        $gallery = $this->getGalleryDetails($data['gallery_id']);
+        
+        $gallery['_featured'] == '1' ? $featured = '0' : $featured = '1';
+        
+        $update = array(
+                "_featured"    =>    $featured,
                 "_changed"    =>    date("Y-m-d H:i:s")
         );
         

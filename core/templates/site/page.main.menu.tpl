@@ -5,17 +5,17 @@
         </div>
         <div id="page-menu" class="col-lg-7 col-md-7 col-sm-12 text-right">
             <ul class="list-inline">
-                <li>
+                <li{if $page_details['node_code'] == 'portfolio'} class="active"{/if}>
                     <a href="javascript:;" title="">PORTFOLIO</a>
                     <ul class="submenu list-inline">
                     {foreach $submenu as $item}
-                        <li><a href="/index/portfolio/{$item._code}" title="">{$item._name|upper}</a></li>
+                        <li{if $page_details['_code'] == $item._code} class="active"{/if}><a href="/index/portfolio/{$item._code}" title="">{$item._name|upper}</a></li>
                     {/foreach}
                     </ul>
                 </li>
-                <li><a href="/news" title="">BLOG</a></li>
-                <li><a href="/{$router->getUrl('index',$router->getItemCode('1',$config->current_locale),'1')}" title="">ABOUT US</a></li>
-                <li><a href="/{$router->getUrl('index',$router->getItemCode('2',$config->current_locale),'2')}" title="">CONTACT</a></li>
+                <li{if $page_details['node_code'] == 'news'} class="active"{/if}><a href="/news" title="">BLOG</a></li>
+                <li{if $page_details['page_id'] == 1} class="active"{/if}><a href="/{$router->getUrl('index',$router->getItemCode('1',$config->current_locale),'1')}" title="">ABOUT US</a></li>
+                <li{if $page_details['page_id'] == 2} class="active"{/if}><a href="/{$router->getUrl('index',$router->getItemCode('2',$config->current_locale),'2')}" title="">CONTACT</a></li>
             </ul>
         </div>
         <div id="page-social" class="col-lg-1 col-md-1 hidden-sm hidden-xs text-right">

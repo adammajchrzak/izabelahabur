@@ -26,9 +26,8 @@
             {/foreach}
             </section>
             <div class="clearfix"></div>
-            <div id="content-area" style="margin-bottom: 50px;">
-                <h2>{$gallery._name}</h2>
-                <div class="text-area">{$gallery._description|upper}</div>
+            <div id="content-area" style="margin-bottom: 80px;">
+                <div class="text-area session-description">{$gallery._description|upper}</div>
             </div> 
             <div class="clearfix"></div>
         </div>

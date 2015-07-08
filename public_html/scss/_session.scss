@@ -2,9 +2,11 @@
     ul {
         li {
             font-size: 12px;
+            line-height: 18px;
             a {
                 color: #000000;
                 text-decoration: none;
+                font-family: $font-basic-bold;
             }
             a:hover {
                 text-decoration: underline;
@@ -26,12 +28,13 @@
 
 
 .sidebar-header-field {
-    background-image: url(/img/page-header-bg.png);
+    background-color: #d1334c;
+    opacity: 0.5;
     h3 {
         color: #ffffff;
         font-size: 18px;
         font-family: $font-basic-bold;
-        padding: 10px;
+        padding: 25px 25px 35px 25px;
         a {
             color: #ffffff;
         }
@@ -57,7 +60,7 @@
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
-  padding: 0px 3px 10px 3px;
+  padding: 0px 6px 6px 0px;
   cursor: pointer;
 }
 
@@ -65,17 +68,22 @@
     display: block;
     width: 240px;
     height: 50px;
-    background-color: #b14057;
-    opacity: 0.7;
+    background-color: #d1334c;
+    opacity: 0.9;
     color: #ffffff;
     a {
         color: #ffffff;
         h4 {
             font-family: $font-basic-bold;
             font-size: 18px;
-            padding: 10px 0px 0px 5px;
+            padding: 10px 0px 0px 16px;
         }
     }
+}
+
+.session-description {
+    font-size: 14px !important;
+    font-family: $font-basic-medium;
 }
 
 @media (max-width: 1200px) {
