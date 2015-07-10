@@ -368,6 +368,28 @@ class galleryController extends Engine_Controller	{
 	}
     
     
+    public function editlinks()	{
+		
+		if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isPostRequest())	{
+            $data = $_POST;
+            
+            foreach($data as $key => $value) {
+                if(preg_match('/image/i', $key)) {
+                    $imageId = str_replace('image', '', $key);
+                    $this->_gallery->saveImagesLinks(array('picture_id' => $imageId, 'istock_link' => $value));
+                } 
+            }
+			$this->_engine->addHttpHeader("Location: /".$this->_router->getUrl('cms#','cms','gallery','edit',$_POST['gallery_id']));
+			exit();
+		}
+
+	}
+    
+    
     
     /*	category */
 	

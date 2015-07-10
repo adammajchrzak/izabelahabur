@@ -97,8 +97,7 @@ body {
 #page-menu {
     padding: 40px 30px 0px 0px;
     li {
-        margin: 0px;
-        margin-left: 10px;
+        margin: 0px 0px 0px 15px;
         padding: 0px;
         font-size: 24px;
         line-height: 28px;
@@ -112,7 +111,7 @@ body {
             position: absolute;
             display: none;
             li {
-                margin: 0px;
+                margin: 0px 0px 0px 5px;
                 padding: 0px;
                 font-size: 14px;
             }
@@ -140,15 +139,14 @@ body {
 }
 
 #page-header-row {
-    /*background-image: url(/img/page-header-bg.png);*/
-    background-color: #d1334c;
-    opacity: 0.8;
+    background-image: url(/img/page-header-bg.png);
     height: 155px;
 }
 
 #page-slogan {
     color: #ffffff;
     margin-left: 35px;
+    width: 750px;
     h1{
         font-size: 24px;
     }

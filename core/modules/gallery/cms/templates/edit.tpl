@@ -64,23 +64,52 @@
             </p>
             <p class="inline-large-label button-height">
                 <label class="label">Zdjęcia</label>
-            <div style="margin-left: 230px;">
-                <ul class="gallery">
-                    {foreach item=tree name=tree from=$picture_list}
-                        <li>
-                            <img src="{$tree.file_dir}/small/{$tree.file_name}" class="framed" />
-                            <div class="controls">
-                                <span class="button-group compact children-tooltip">
-                                    <a href="/{$router->getUrl('cms','gallery', 'picture_edit', $tree.picture_id)}" class="button icon-gear button-edit" title="edytuj właściwości">edytuj</a>
-                                    <a href="/{$router->getUrl('cms','gallery', 'picture_delete', $tree.picture_id)}" title="usuń zdjęcie" class="button icon-trash button-delete" title="{$tree.picture_id}"></a>
-                                </span>
-                            </div>
-                        </li>
-                    {/foreach}
-                </ul>
-            </div>
+                <div style="margin-left: 230px;">
+                    <ul class="gallery">
+                        {foreach item=tree name=tree from=$picture_list}
+                            <li>
+                                <img src="{$tree.file_dir}/small/{$tree.file_name}" class="framed" />
+                                <div class="controls">
+                                    <span class="button-group compact children-tooltip">
+                                        <a href="/{$router->getUrl('cms','gallery', 'picture_edit', $tree.picture_id)}" class="button icon-gear button-edit" title="edytuj właściwości">edytuj</a>
+                                        <a href="/{$router->getUrl('cms','gallery', 'picture_delete', $tree.picture_id)}" title="usuń zdjęcie" class="button icon-trash button-delete" title="{$tree.picture_id}"></a>
+                                    </span>
+                                </div>
+                            </li>
+                        {/foreach}
+                    </ul>
+                </div>
             </p>
         </fieldset>
+    </form> 
+                
+    <div class="clear-both" style="margin-top: 50px;"></div>
+    
+    <form id="form-editlinks-gallery" name="form-editlinks-gallery" method="post" action="/{$router->getUrl('cms','gallery','editlinks')}">
+        <h2 class="thin float-left">Zarządzanie linkami zdjęć</h2>
+        <div class="float-right">
+            <button type="submit" class="button glossy mid-margin-right"><span class="button-icon"><span class="icon-tick"></span></span>zapisz zmiany</button>
+            <button type="button" onclick="document.location.href = '/cms#/{$router->getUrl('cms','gallery')}';" class="button glossy"><span class="button-icon red-gradient"><span class="icon-cross-round"></span></span>anuluj</button>
+        </div>
+        <div class="clear-both"></div>
+        <fieldset class="fieldset">
+        <input type="hidden" id="gallery_id" name="gallery_id" value="{$gallery_details.gallery_id}">
+        <input type="hidden" id="lang_code" name="lang_code" value="{$gallery_details.lang_code}">    
+        <table class="table">
+            <tr>
+                <th>Zdjęcie</th>
+                <th>iStock Link</th>
+            </tr>
+        {foreach item=tree name=tree from=$picture_list}
+            <tr>
+                <td><img src="{$tree.file_dir}/small/{$tree.file_name}" class="framed" /></td>
+                <td>
+                    <input type="text" id="image{$tree.picture_id}" name="image{$tree.picture_id}" value="{$tree.istock_link}" class="input full-width" />
+                </td>
+            </tr>
+        {/foreach}
+        </table>
+        </fieldset>        
     </form>
 </div>
 
@@ -95,7 +124,7 @@
 {literal}
     <script type="text/javascript">
                 $(function () {
-                    
+
                     CKEDITOR.replace('_lead', { height: '200px'});    
                     CKEDITOR.replace('_description', { height: '200px'});
 

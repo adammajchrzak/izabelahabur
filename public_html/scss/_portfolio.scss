@@ -1,22 +1,22 @@
 #portfolio-images {
-   margin-top: 10px;
-   /* Prevent vertical gaps */
-   line-height: 0;
-   
-   -webkit-column-count: 4;
-   -webkit-column-gap:   0px;
-   -moz-column-count:    4;
-   -moz-column-gap:      0px;
-   column-count:         4;
-   column-gap:           0px;
+    margin-top: 10px;
+    /* Prevent vertical gaps */
+    line-height: 0;
+
+    -webkit-column-count: 4;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    4;
+    -moz-column-gap:      0px;
+    column-count:         4;
+    column-gap:           0px;
 }
 
 #portfolio-images img {
-  /* Just in case there are inline attributes */
-  width: 100% !important;
-  height: auto !important;
-  padding: 0px 10px 10px 0px;
-  cursor: pointer;
+    /* Just in case there are inline attributes */
+    width: 100% !important;
+    height: auto !important;
+    padding: 0px 10px 10px 0px;
+    cursor: pointer;
 }
 
 .grayscale {
@@ -31,6 +31,10 @@
 
 }
 
+.tooltips {
+    position: relative;
+}
+
 #portfolio-tooltip {
     display: block;
     width: 240px;
@@ -40,6 +44,25 @@
     color: #ffffff;
     a {
         color: #ffffff;
+        text-decoration: none;
+        h4 {
+            font-family: $font-basic-bold;
+            font-size: 18px;
+            padding: 7px 0px 0px 20px;
+        }
+    }
+}
+
+.portfolio-tooltip {
+    display: block;
+    width: 240px;
+    height: 50px;
+    background-color: #d1334c;
+    opacity: 0.9;
+    color: #ffffff;
+    a {
+        color: #ffffff;
+        text-decoration: none;
         h4 {
             font-family: $font-basic-bold;
             font-size: 18px;

@@ -423,6 +423,18 @@ class GalleryModel extends Engine_Model
         return true;
     }
     
+    public function saveImagesLinks($data) 
+    {
+        $update    = array(
+            'istock_link'   =>  $data['istock_link'],
+            '_changed'      =>  date("Y-m-d H:i:s")
+        );
+        
+        $this->_db->update("cms_gallery_picture", $update, "picture_id = '".(int)$data['picture_id']."'");
+        
+        return true;
+    }
+    
     public function deletePicture($picture_id)
     {
         $select    =    $this->_db->select()

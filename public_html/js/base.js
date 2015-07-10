@@ -7,7 +7,7 @@ $(document).ready(function() {
         }, 100);
     });
     
-    $('#portfolio-tooltips, #session-tooltip').css({
+    $('#session-tooltip, .portfolio-tooltip').css({
         'display': 'none'
     });
     
@@ -17,33 +17,27 @@ $(document).ready(function() {
     
     $('#portfolio-images img.gray').addClass('grayscale');
     
-    $('#portfolio-images img.gray').mouseover(function(){
+    $('#portfolio-images .tooltips').mouseover(function(){
         
-        $(this).removeClass('grayscale');
-        $(this).addClass('graydisabled');
+        $(this).find('img').removeClass('grayscale');
+        $(this).find('img').addClass('graydisabled');
+        var dimW = $(this).find('img').width();
         
-        var id = $(this).offset();
-        var dimW = $(this).width();
-        var dimH = $(this).height();
-        
-        $('#portfolio-tooltip').css({
-            'display': 'inline',
+        $('> .portfolio-tooltip', this).css({
+            'display': 'inline-block',
             'position': 'absolute',
-            'top' : parseInt(id.top + dimH - 50) + 'px',
-            'left' : parseInt(id.left + 1) + 'px',
-            'width' : dimW
+            'bottom' : '10px',
+            'left' : '0px',
+            'width' : dimW,
+            'height' : 'auto'
         });
-        
-        var tHtml = '<a href="' + $(this).attr('data-url') + '"><h4>' + $(this).attr('alt') + '</h4></a>';
-        $('#portfolio-tooltip').html(tHtml);
-        
     });
     
-    $('#portfolio-images img.gray').mouseout(function(){
-        $(this).removeClass('graydisabled');
-        $(this).addClass('grayscale');
+    $('#portfolio-images .tooltips').mouseout(function(){
+        $(this).find('img').removeClass('graydisabled');
+        $(this).find('img').addClass('grayscale');
+        $('> .portfolio-tooltip', this).css({ 'display' : 'none' });
     });
-    
     
     $('#portfolio-images img.box').each(function(){
         
@@ -61,7 +55,6 @@ $(document).ready(function() {
         
         var tHtml = '<a href="' + $(this).attr('data-url') + '"><h4>' + $(this).attr('alt') + '</h4></a>';
         $('#' + $(this).attr('id') + '-tooltip').html(tHtml);
-        
     });
     
     $('#session-images img.gray').mouseover(function(){
@@ -81,7 +74,6 @@ $(document).ready(function() {
         
         var tHtml = '<a href="' + $(this).attr('data-url') + '" target="_blank"><h4>' + $(this).attr('alt') + '</h4></a>';
         $('#session-tooltip').html(tHtml);
-        
     });
     
     
