@@ -6,8 +6,10 @@
         </div>
     </div>
 </div>
+
 <div class="page-white-spacer"></div>
-<div id="page-picture-row" class="container">
+
+<div id="page-picture-row">
     <div id="page-picture" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner" role="listbox">
         {foreach $slider as $item}

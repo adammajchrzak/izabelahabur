@@ -204,6 +204,27 @@ class GalleryModel extends Engine_Model
         return $result;
     }
     
+    public function getPictureFromLevel1()
+    {
+        $select = $this->_db->select()
+                    ->from(array('cgp' => 'cms_gallery_picture'))
+                    ->joinLeft(
+                        array('cg' => 'cms_gallery'),
+                        'cgp.gallery_id = cg.gallery_id',
+                        array('category_id', '_code', '_name')
+                    )
+                    ->joinLeft(
+                        array('cgc' => 'cms_gallery_category'),
+                        'cgc.category_id = cg.category_id',
+                        array('category_code' => '_code')
+                    )
+                    ->where('cgp._level1 = ?', 1)
+                    ->where('cg._active = ?', 1);
+        $result = $this->_db->fetchAll($select);
+
+        return $result;
+    }
+    
     
     public function getGalleryCategoryList($lang_code = '', $_active = '')
     {
@@ -426,6 +447,8 @@ class GalleryModel extends Engine_Model
     public function saveImagesLinks($data) 
     {
         $update    = array(
+            '_level1'       => (int)$data['_level1'],
+            '_level2'       => (int)$data['_level2'],
             'istock_link'   =>  $data['istock_link'],
             '_changed'      =>  date("Y-m-d H:i:s")
         );

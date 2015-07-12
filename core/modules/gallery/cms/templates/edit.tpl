@@ -42,7 +42,7 @@
             <p class="inline-large-label button-height">
                 <label class="label">Słowa kluczowe</label>
                 {foreach from=$keywords item=kw}
-                    <input type="checkbox" id="keywords[]" name="keywords[]" value="{$kw.keyword_id}"{if in_array($kw.keyword_id, $gallery_keywords)} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE"> {$kw._keyword}
+                    <input type="checkbox" id="keywords[]" name="keywords[]" value="{$kw.keyword_id}"{if in_array($kw.keyword_id, $gallery_keywords)} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE"> {$kw._name}
                 {/foreach}
                 <input type="text" id="keyword_list" name="keyword_list" value="" class="input full-width" placeholder="wpisz nowe słowa oddzielone przecinkiem" />
             </p>
@@ -97,8 +97,10 @@
         <input type="hidden" id="lang_code" name="lang_code" value="{$gallery_details.lang_code}">    
         <table class="table">
             <tr>
-                <th>Zdjęcie</th>
+                <th class="one-column">Zdjęcie</th>
                 <th>iStock Link</th>
+                <th class="one-column">Portfolio</th>
+                <th class="one-column">Kategoria</th>
             </tr>
         {foreach item=tree name=tree from=$picture_list}
             <tr>
@@ -106,6 +108,8 @@
                 <td>
                     <input type="text" id="image{$tree.picture_id}" name="image{$tree.picture_id}" value="{$tree.istock_link}" class="input full-width" />
                 </td>
+                <td><input id="level1{$tree.picture_id}" name="level1{$tree.picture_id}" type="checkbox" value="1"{if $tree._level1 == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" /></td>
+                <td><input id="level2{$tree.picture_id}" name="level2{$tree.picture_id}" type="checkbox" value="1"{if $tree._level2 == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" /></td>
             </tr>
         {/foreach}
         </table>
@@ -122,41 +126,41 @@
 {/foreach}
 
 {literal}
-    <script type="text/javascript">
-                $(function () {
+<script type="text/javascript">
+    $(function () {
 
-                    CKEDITOR.replace('_lead', { height: '200px'});    
-                    CKEDITOR.replace('_description', { height: '200px'});
+        CKEDITOR.replace('_lead', { height: '100px'});    
+        CKEDITOR.replace('_description', { height: '200px'});
 
-                    $('#file_upload').uploadify({
-                        'swf': '/files4cms/js/uploadify/uploadify.swf',
-                        'uploader': '/cms/gallery/upload/111/{/literal}{$gallery_details.gallery_id}{literal}',
-                        'cancelImg': '/files4cms/js/uploadify/cancel.png',
-                        'folder': '/upload',
-                        'auto': true,
-                        'multi': true,
-                        'displayData': 'speed',
-                        'sizeLimit': 10240000,
-                        'buttonText': 'WYBIERZ PLIKI',
-                        'fileObjName': 'filedata',
-                        'fileTypeExts': '*.jpg;*.jpeg;*.gif;',
-                        'onComplete': function (event, ID, fileObj, response, data) {
-                        },
-                        'onQueueComplete': function (queueData) {
-                            window.location.reload();
-                        }
-                    });
+        $('#file_upload').uploadify({
+            'swf': '/files4cms/js/uploadify/uploadify.swf',
+            'uploader': '/cms/gallery/upload/111/{/literal}{$gallery_details.gallery_id}{literal}',
+            'cancelImg': '/files4cms/js/uploadify/cancel.png',
+            'folder': '/upload',
+            'auto': true,
+            'multi': true,
+            'displayData': 'speed',
+            'sizeLimit': 10240000,
+            'buttonText': 'WYBIERZ PLIKI',
+            'fileObjName': 'filedata',
+            'fileTypeExts': '*.jpg;*.jpeg;*.gif;',
+            'onComplete': function (event, ID, fileObj, response, data) {
+            },
+            'onQueueComplete': function (queueData) {
+                window.location.reload();
+            }
+        });
 
-                    $(".button-delete").click(function () {
-                        $.ajax({
-                            url: $(this).attr('href'),
-                            async: false,
-                            success: function (data) {
-                                window.location.reload();
-                            }
-                        });
-                        return false;
-                    });
-                });
-    </script>
+        $(".button-delete").click(function () {
+            $.ajax({
+                url: $(this).attr('href'),
+                async: false,
+                success: function (data) {
+                    window.location.reload();
+                }
+            });
+            return false;
+        });
+    });
+</script>
 {/literal}

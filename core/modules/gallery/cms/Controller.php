@@ -198,81 +198,19 @@ class galleryController extends Engine_Controller	{
 			$basename	=	$this->_gallery->ToSlug($filename['filename']).'.'.$extension;
 			$filename	=	date("His").$this->_gallery->ToSlug($filename['filename']).'.'.$extension;
             
+            
+            $source_image = $_FILES['filedata']['tmp_name'];
+            $quality = 100;
+            $wmsource = $_SERVER['DOCUMENT_ROOT'].'/img/picture-bg.png';
+            $success  = $this->image_handler($source_image, $dirname, $quality, $wmsource);
 
-			if(!is_writeable($_SERVER['DOCUMENT_ROOT'].$this->_config->gallery->dir))	{
-	  	 		print $ErrorTxt .= "Can't write to the files's folder";
-	  	 		die();
-	  	 	}	else 	{
-	  	 	    if(empty($_FILES['filedata']) ) {
-		    		$ErrorTxt .= "Check all fields";
-		      		die();
-		    	}
-				
-				if($_FILES['filedata']['error']) { 
-				    switch($_FILES['filedata']['error'])	{
-					    case 0:
-					    	if($_FILES['filedata']['type'] !='image/jpeg' && $_FILES['filedata']['type'] !='image/jpg' &&
-					        	$_FILES['filedata']['type'] !='image/pjpeg' && $_FILES['filedata']['type'] !='image/png')	{
-					               $ErrorTxt = "Niedozwolone rozszerzenie pliku!";
-					               return 1;
-					        }
-					        break;
-					    case 1:
-					    case 2: 
-					    	$ErrorTxt = "Plik jest zbyt duzy";
-					        return 1;
-					    	break;
-					    case 3: 
-					    	$ErrorTxt = "Proces przesyłania pliku nie został ukończony";
-					        return 1;
-					    	break;
-					    case 4: 
-					    	$ErrorTxt = "Nie przesłano pliku";
-					        return 1;
-					    	break;
-					    default: 
-					    	$ErrorTxt = "Wystapił nieznany błąd";
-					        return 1;
-					    	break;
-				    }
-				}
-				
-			    $postfix = '';
-				$alias   = $filename;
-                
-                $oldImage			  = imagecreatefromjpeg($_FILES['filedata']['tmp_name']);
-			    list($width, $height) = getimagesize($_FILES['filedata']['tmp_name']);
-			    $scale                =	$height / $width;
-                
-			    $folders = explode(',', $this->_config->gallery->folders);
-                foreach ($folders as $value) {                    
-                    $widthNew  = $this->_config->gallery->{$value}->width;
-                    $heightNew = $widthNew * $scale;
-
-                    $newImage  = imagecreatetruecolor($widthNew, $heightNew);
-                            
-                    //kopiuje zmniejszone do max wymiarow zdjecie pod zmienna $newImage
-                    imagecopyresampled($newImage, $oldImage, 0, 0, 0, 0, $widthNew, $heightNew, $width, $height);
-
-                    if(!imagejpeg($newImage, $_SERVER['DOCUMENT_ROOT'].$this->_config->gallery->dir.$dirname.'/'.$value.'/'.$alias))	{
-                        imagedestroy($newImage);
-                        imagedestroy($oldImage);
-                        $filename .= "Nie mozna zapisać zdjecia";
-                        return 1;                          
-                    }
-                    imagedestroy($newImage);
-                }
-                
-        	    imagedestroy($oldImage);
-		    }
-
-			$data = array('gallery_id' => $this->_router->getItemSegments(4), 'file_name' => $filename, 'file_basename' => $basename);
+            $data = array('gallery_id' => $this->_router->getItemSegments(4), 'file_name' => $filename, 'file_basename' => $basename);
 			
 			$this->_gallery->addPictureToGallery($data);
 			
 			echo str_replace($_SERVER['DOCUMENT_ROOT'],'', $basename);
 		}
-		
+        
 		exit();
 	}
 	
@@ -280,7 +218,7 @@ class galleryController extends Engine_Controller	{
 			
 		$i = strrpos($str, ".");
 		if (!$i) { return ""; }
-		$l= strlen($str) - $i;
+		$l = strlen($str) - $i;
 		$ext = substr($str, $i+1, $l);
 		
 		return $ext;
@@ -378,10 +316,18 @@ class galleryController extends Engine_Controller	{
             $data = $_POST;
             
             foreach($data as $key => $value) {
+                $update = array();
                 if(preg_match('/image/i', $key)) {
                     $imageId = str_replace('image', '', $key);
-                    $this->_gallery->saveImagesLinks(array('picture_id' => $imageId, 'istock_link' => $value));
-                } 
+                    $update['istock_link'] = $value;
+                }
+                
+                $update['_level1'] = (int)$data['level1'.$imageId];
+                $update['_level2'] = (int)$data['level2'.$imageId];
+                
+                $update['picture_id'] = $imageId;
+                
+                $this->_gallery->saveImagesLinks($update);
             }
 			$this->_engine->addHttpHeader("Location: /".$this->_router->getUrl('cms#','cms','gallery','edit',$_POST['gallery_id']));
 			exit();
@@ -488,5 +434,91 @@ class galleryController extends Engine_Controller	{
 		
 		exit();
 	}
+
+    
+    function image_handler($source_image, $dirname, $quality = 80, $wmsource = false) {
+        
+        $info = getimagesize($source_image);
+        $imgtype = image_type_to_mime_type($info[2]);
+
+        switch ($imgtype) {
+            case 'image/jpeg':
+                $source = imagecreatefromjpeg($source_image);
+                break;
+            case 'image/gif':
+                $source = imagecreatefromgif($source_image);
+                break;
+            case 'image/png':
+                $source = imagecreatefrompng($source_image);
+                break;
+            default:
+                die('Invalid image type.');
+        }
+
+        $src_w = imagesx($source);
+        $src_h = imagesy($source);
+        $src_ratio = $src_h / $src_w;
+        
+        $extension = $this->getExtension($_FILES['filedata']['name']);
+		$extension = strtolower($extension);
+        
+        $filename	=	pathinfo($_FILES['filedata']['name']);
+        $basename	=	$this->_gallery->ToSlug($filename['filename']).'.'.$extension;
+        $filename	=	date("His").$this->_gallery->ToSlug($filename['filename']).'.'.$extension;
+        $postfix = '';
+        $alias   = $filename;
+
+        list($width, $height) = getimagesize($_FILES['filedata']['tmp_name']);
+        $scale                =	$height / $width;
+
+        $folders = explode(',', $this->_config->gallery->folders);
+        foreach ($folders as $value) {                    
+            $widthNew  = $this->_config->gallery->{$value}->width;
+            $heightNew = $widthNew * $src_ratio;
+
+            $final = imagecreatetruecolor($widthNew, $heightNew);            
+            imagecopyresampled($final, $source, 0, 0, 0, 0, $widthNew, $heightNew, $src_w, $src_h);
+
+            if ($wmsource) {
+                $info = getimagesize($wmsource);
+                $imgtype = image_type_to_mime_type($info[2]);
+
+                #assuming the mime type is correct
+                switch ($imgtype) {
+                    case 'image/jpeg':
+                        $watermark = imagecreatefromjpeg($wmsource);
+                        break;
+                    case 'image/gif':
+                        $watermark = imagecreatefromgif($wmsource);
+                        break;
+                    case 'image/png':
+                        $watermark = imagecreatefrompng($wmsource);
+                        break;
+                    default:
+                        die('Invalid watermark type.');
+                }
+
+                $wm_w = imagesx($watermark);
+                $wm_h = imagesy($watermark);
+
+                $img_paste_x = 0;
+                while($img_paste_x < $widthNew){
+                    $img_paste_y = 0;
+                    while($img_paste_y < $heightNew){
+                        imagecopy($final, $watermark, $img_paste_x, $img_paste_y, 0, 0, $wm_w, $wm_h);
+                        $img_paste_y += $wm_h;
+                    }
+                    $img_paste_x += $wm_w;
+                }
+            }
+            $destination = $_SERVER['DOCUMENT_ROOT'].$this->_config->gallery->dir.$dirname.'/'.$value.'/'.$alias;
+            if (!Imagejpeg($final, $destination, $quality)) {
+                return false;
+            }
+        }
+        
+        return false;
+    }
+
 }
 ?>

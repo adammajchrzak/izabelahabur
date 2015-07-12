@@ -24,8 +24,8 @@ $(document).ready(function() {
         var dimW = $(this).find('img').width();
         
         $('> .portfolio-tooltip', this).css({
-            'display': 'inline-block',
-            'position': 'absolute',
+            'display' : 'inline-block',
+            'position' : 'absolute',
             'bottom' : '10px',
             'left' : '0px',
             'width' : dimW,

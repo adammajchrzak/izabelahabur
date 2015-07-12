@@ -6,7 +6,7 @@
         <div id="page-menu" class="col-lg-7 col-md-7 col-sm-12 text-right">
             <ul class="list-inline">
                 <li{if $page_details['node_code'] == 'portfolio'} class="active"{/if}>
-                    <a href="javascript:;" title="">PORTFOLIO</a>
+                    <a href="/index/portfolio/" title="">PORTFOLIO</a>
                     <ul class="submenu list-inline">
                     {foreach $submenu as $item}
                         <li{if $page_details['_code'] == $item._code} class="active"{/if}><a href="/index/portfolio/{$item._code}" title="">{$item._name|upper}</a></li>

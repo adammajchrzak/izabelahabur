@@ -155,6 +155,15 @@ class indexController extends Engine_Controller
                     $this->_engine->setToRender('portfolio.tpl');
                 }
             }
+        } else {
+            
+            $this->_view->list = $this->_gallery->getPictureFromLevel1();
+            $this->_view->category = array(
+                '_title' => $this->_config->const->_page_header->_value, 
+                '_description' => $this->_config->const->_page_description->_description
+            );
+            
+            $this->_engine->setToRender('portfolio.tpl');
         }
     }
 }

@@ -17,8 +17,8 @@
         <ul id="access" class="children-tooltip">
             <li></li>
             <li></li>
-            <li><a href="http://www.4people.pl" title="4people.pl - agencja interaktywna"><span class="icon-user"></span></a></li>
-            <li><a href="http://www.pcg.pl/{$router->getUrl('cms','auth','logout')}" title="wyloguj"><span class="icon-extract"></span></a></li>
+            <li><a href="http://www.netiz.pl" title="netiz.pl - agencja interaktywna"><span class="icon-user"></span></a></li>
+            <li><a href="{$_SERVER['HTTP_HOST']}/{$router->getUrl('cms','auth','logout')}" title="wyloguj"><span class="icon-extract"></span></a></li>
         </ul>
         <section class="navigable" id="doc-menu">
             <ul class="big-menu">

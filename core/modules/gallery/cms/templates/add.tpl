@@ -52,7 +52,7 @@
 {literal}
 <script>
     $(function () {
-        CKEDITOR.replace('_lead', { height: '200px'});
+        CKEDITOR.replace('_lead', { height: '100px'});
         CKEDITOR.replace('_description', { height: '200px'});
     });
 </script>	
