@@ -1,4 +1,4 @@
-<div id="page-header-row" class="row">
+<div id="page-header-row">
     <div id="page-header" class="container">
         <div id="page-slogan">
             <h2>{$const->_page_header->_value}</h2>
@@ -9,9 +9,9 @@
 
 <div class="page-white-spacer"></div>
 
-<div id="page-picture-row">
+<div id="page-picture-row" class="container-fluid">
     <div id="page-picture" class="carousel slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
+        <div class="carousel-inner" role="listbox2">
         {foreach $slider as $item}
             <div class="item{if $item@first} active{/if}">
                 <a href="{$item._link}"><img src="/files/slider/{$item._file}" alt="{$item._name} :: {$item._description|strip_tags}" style="padding: 0; margin: 0px;"/></a>

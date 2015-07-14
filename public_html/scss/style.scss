@@ -163,9 +163,20 @@ body {
 #page-picture-row {
     overflow: hidden;
     padding: 0px !important;
+    margin: 0px !important;
 }
 
 #page-picture {
+    padding: 0px !important;
+    margin: 0px !important;
+    div{
+        padding: 0px !important;
+        margin: 0px !important;
+        .item {
+            padding: 0px !important;
+            margin: 0px !important;
+        }
+    }
 }
 
 #breadcrumbs {
@@ -187,13 +198,16 @@ body {
     }
 }
 
-
 .carousel .item {
     width: 100%; /*slider width*/
     max-height: 600px; /*slider height*/
+    margin: 0px !important;
+    padding: 0px !important;
 }
 .carousel .item img {
     width: 100%; /*img width*/
+    padding: 0px;
+    margin: 0px;
 }
 /*add some makeup*/
 .carousel .carousel-control {
@@ -201,6 +215,8 @@ body {
     border: none;
     top: 50%;
 }
+
+
 /*full width container*/
 @media (max-width: 767px) {
     .block {

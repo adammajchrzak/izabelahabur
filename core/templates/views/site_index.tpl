@@ -21,7 +21,7 @@
 
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 0px; margin:0px;">
         {include file="templates/site/page.main.menu.tpl"}
         {$CONTENT}
 {include file="templates/site/footer.tpl"}
