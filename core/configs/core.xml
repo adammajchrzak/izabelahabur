@@ -77,9 +77,9 @@
 		</meta_data>
 		
 		<email>
-			<account>noreply@netiz.pl.pl</account>
+			<account>noreply@netiz.pl</account>
 			<passwd>U1fKURg7@OE</passwd>
-			<server>smtp.netiz.pl.pl</server>
+			<server>smtp.netiz.pl</server>
 		</email>
 	</core>
 	
@@ -107,7 +107,7 @@
 			<params>
 				<host>localhost</host>
 				<username>root</username>
-				<password>root</password>
+				<password>mysql</password>
 				<dbname>habur</dbname>
 				<charset>utf8</charset>
 				<prefix></prefix>
