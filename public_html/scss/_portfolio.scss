@@ -1,22 +1,22 @@
 #portfolio-images {
-   margin-top: 10px;
-   /* Prevent vertical gaps */
-   line-height: 0;
-   
-   -webkit-column-count: 4;
-   -webkit-column-gap:   0px;
-   -moz-column-count:    4;
-   -moz-column-gap:      0px;
-   column-count:         4;
-   column-gap:           0px;
+    margin-top: 10px;
+    /* Prevent vertical gaps */
+    line-height: 0;
+
+    -webkit-column-count: 4;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    4;
+    -moz-column-gap:      0px;
+    column-count:         4;
+    column-gap:           0px;
 }
 
 #portfolio-images img {
-  /* Just in case there are inline attributes */
-  width: 100% !important;
-  height: auto !important;
-  padding: 0px 3px 10px 3px;
-  cursor: pointer;
+    /* Just in case there are inline attributes */
+    width: 100% !important;
+    height: auto !important;
+    padding: 0px 10px 10px 0px;
+    cursor: pointer;
 }
 
 .grayscale {
@@ -31,19 +31,42 @@
 
 }
 
+.tooltips {
+    position: relative;
+}
+
 #portfolio-tooltip {
     display: block;
     width: 240px;
     height: 50px;
-    background-color: #b14057;
-    opacity: 0.7;
+    background-color: #d1334c;
+    opacity: 0.9;
     color: #ffffff;
     a {
         color: #ffffff;
+        text-decoration: none;
         h4 {
             font-family: $font-basic-bold;
-            font-size: 13px;
-            padding: 10px 0px 0px 5px;
+            font-size: 18px;
+            padding: 7px 0px 0px 20px;
+        }
+    }
+}
+
+.portfolio-tooltip {
+    display: block;
+    width: 240px;
+    height: 50px;
+    background-color: #d1334c;
+    opacity: 0.9;
+    color: #ffffff;
+    a {
+        color: #ffffff;
+        text-decoration: none;
+        h4 {
+            font-family: $font-basic-bold;
+            font-size: 18px;
+            padding: 7px 0px 0px 20px;
         }
     }
 }
@@ -67,22 +90,22 @@
 }
 @media (max-width: 1000px) {
   #portfolio-images {
-  -moz-column-count:    3;
-  -webkit-column-count: 3;
-  column-count:         3;
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
   }
 }
 @media (max-width: 800px) {
   #portfolio-images {
-  -moz-column-count:    2;
-  -webkit-column-count: 2;
-  column-count:         2;
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
   }
 }
 @media (max-width: 400px) {
   #portfolio-images {
-  -moz-column-count:    1;
-  -webkit-column-count: 1;
-  column-count:         1;
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
   }
 }

@@ -2,7 +2,7 @@
     <div id="page-header" class="container">
         <div id="page-slogan">
             <h2>{$gallery._name|upper}</h2>
-            <div>{$gallery._description|upper}</div>
+            <div>{$gallery._lead|upper}</div>
         </div>
     </div>
 </div>
@@ -16,7 +16,7 @@
             {/foreach}
             </ul>
             <div class="sidebar-header-field">
-                <h3><a href="javascript:;">CHECK OUR LATEST PRODUCTION >></a></h3>
+                <h3><a href="/index/portfolio/latest">CHECK OUR LATEST PRODUCTION >></a></h3>
             </div>
         </div>
         <div class="col-lg-6">
@@ -26,10 +26,10 @@
             {/foreach}
             </section>
             <div class="clearfix"></div>
-            <div>
-                <h2>{$gallery._name}</h2>
-                <div>{$gallery._description}</div>
-            </div>    
+            <div id="content-area" style="margin-bottom: 80px;">
+                <div class="text-area session-description">{$gallery._description|upper}</div>
+            </div> 
+            <div class="clearfix"></div>
         </div>
         <div id="sidebar-right" class="col-lg-3">
             <div class="sidebar-header-field">
@@ -39,7 +39,7 @@
             <h4>RELATED KEYWORDS:</h4>
             <ul>
                 {foreach $keywords as $item}
-                    <li><a href="/index/portfolio/tags/{$item._keyword|lower}">{$item._keyword|upper}</a></li>
+                    <li><a href="/index/portfolio/tags/{$item._keyword|lower}">{$item._name|upper}</a></li>
                 {/foreach}
             </ul>
             {/if}

@@ -17,6 +17,10 @@
 			<label class="label">Nazwa galerii</label>
 			<input type="text" id="_name" name="_name" value="" class="input full-width" />
 		</p>
+                <p class="inline-large-label button-height">
+			<label class="label">Opis wstępny</label>
+			<textarea id="_lead" name="_lead" class="input full-width"></textarea>
+		</p>
 		<p class="inline-large-label button-height">
 			<label class="label">Opis galerii</label>
 			<textarea id="_description" name="_description" class="input full-width"></textarea>
@@ -34,6 +38,10 @@
 				{/foreach}
 			</select>
 		</p>
+                <p class="inline-large-label button-height">
+			<label class="label">Nowość</label>
+			<input id="_latest" name="_latest" type="checkbox" value="1" checked="checked" class="switch" data-text-on="TAK" data-text-off="NIE" />
+		</p>
 		<p class="inline-large-label button-height">
 			<label class="label">Galeria aktywna</label>
 			<input id="_active" name="_active" type="checkbox" value="1" checked="checked" class="switch" data-text-on="TAK" data-text-off="NIE" />
@@ -44,7 +52,8 @@
 {literal}
 <script>
     $(function () {
-        CKEDITOR.replace('_description');
+        CKEDITOR.replace('_lead', { height: '100px'});
+        CKEDITOR.replace('_description', { height: '200px'});
     });
 </script>	
 {/literal}

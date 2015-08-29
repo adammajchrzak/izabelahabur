@@ -1,0 +1,23 @@
+/* 
+    Created on : 2015-06-18, 10:37:23
+    Author     : Adam Majchrzak
+*/
+
+.subpage_news_section {
+    margin-top: 50px;
+    .subpage_news_content {
+        div {
+            font-size: 14px;
+        }
+    }
+}
+
+.subpage_news_details {
+    .subpage_news_content{
+        font-size: 14px;
+    }
+    .news-back {
+        clear: both;
+        margin-top: 40px;
+    }
+}

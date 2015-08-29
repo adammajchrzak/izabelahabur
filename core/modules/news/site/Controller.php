@@ -18,14 +18,9 @@ class newsController extends Engine_Controller	{
 		$this->_news 	= NewsModel::Instance();
 		$this->_gallery	= GalleryModel::Instance();
 		
-		$this->_head->addStyleFile('reset.css',			'screen',		true, '/css/');
-		$this->_head->addStyleFile('style.css',			'screen',		true, '/css/');
-		
-                $this->_head->addScriptFile('4cookiesmulti.js',                 true, '/js/');
-		$this->_head->addScriptFile('cufon-yui.js',			true, '/js/');
-		$this->_head->addScriptFile('Helvetica_Neue_Light.font.js', 	true, '/js/');
-		$this->_head->addScriptFile('Helvetica_Neue_Bold.font.js', 	true, '/js/');
-		$this->_head->addScriptFile('kukuczki7.js', 			true, '/js/');
+		$this->_head->addStyleFile('reset.css', 'screen', true, '/css/');
+        $this->_head->addStyleFile('bootstrap.min.css', 'screen', true, '/css/');
+        $this->_head->addStyleFile('style.css', 'screen', true, '/css/');
 		
 		$this->_head->title 		= $this->_config->meta_data->title;
 		$this->_head->keywords 		= $this->_config->meta_data->keywords;
@@ -35,10 +30,10 @@ class newsController extends Engine_Controller	{
 	
 	public function index()	{
 		
-		$parent_page				=	$this->_cms->getPageRoot('2', $this->_config->current_locale);
-		$this->_view->parent_page	=	$parent_page;
-		$this->_view->breadcrumb	=	$this->_cms->getPageBreadcrumb('2', $this->_config->current_locale);
-		$this->_view->submenu		=	$this->_cms->getPagemenu('1', '', $this->_config->current_locale);
+		$this->_view->page_details = array('node_code' => 'news');
+        
+        $this->_view->breadcrumb  =	$this->_cms->getPageBreadcrumb('2', $this->_config->current_locale);
+		$this->_view->submenu     = $this->_gallery->getGalleryCategoryList('pl', 1);
 		
 		if(is_numeric($this->_router->getItemSegments(2))){
 			
@@ -60,7 +55,6 @@ class newsController extends Engine_Controller	{
 			}
 			
 			$this->_view->news_details 	=	$news_details;
-			$this->_view->page_content 	=	$this->_view->render('modules/index/site/templates/investment.bottom.links.tpl');
 			
 			$this->_view->news_list		=	$this->_news->getSidebarNewsList($this->_config->current_locale);
 				

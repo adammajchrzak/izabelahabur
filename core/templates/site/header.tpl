@@ -20,5 +20,5 @@
     {/if}
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid2">
             {include file="templates/site/page.main.menu.tpl"}

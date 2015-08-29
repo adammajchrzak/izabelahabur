@@ -8,8 +8,8 @@
 		<delimiter>/</delimiter>
 		<default_locale>pl</default_locale>
 		<multi_locale>0</multi_locale>
-		<email_from_name>4people.pl</email_from_name>
-		<email_from_mail>noreply@4people.pl</email_from_mail>
+		<email_from_name>netiz.pl.pl</email_from_name>
+		<email_from_mail>noreply@netiz.pl.pl</email_from_mail>
 		<salt>ds78f7asesya63wvdxtgzFFSDR564f</salt>
 		<cache>
 			<timeout>120</timeout>
@@ -21,23 +21,65 @@
 		<style_base>style.base.css</style_base>
 		<jquery_min>jquery-1.10.2.min.js</jquery_min>
 		<jqueryui>1.8.13.custom</jqueryui>
-		<gallery_dir>/files/gallery/</gallery_dir>		
+	
 		<gallery_max_x>800</gallery_max_x>
 		<gallery_max_y>600</gallery_max_y>
 		<gallery_min_x>100</gallery_min_x>
 		<gallery_min_y>100</gallery_min_y>
+                <gallery>
+                    <dir>/files/gallery/</dir>
+                    <folders>xsmall,small,medium,large,xlarge,xxlarge,xxxlarge</folders>
+                    <xsmall>
+                        <folder>xsmall</folder>
+                        <width>140</width>
+                        <height>140</height>
+                    </xsmall>
+                    <small>
+                        <folder>small</folder>
+                        <width>200</width>
+                        <height>200</height>
+                    </small>
+                    <medium>
+                        <folder>medium</folder>
+                        <width>300</width>
+                        <height>300</height>
+                    </medium>
+                    <large>
+                        <folder>large</folder>
+                        <width>700</width>
+                        <height>700</height>
+                    </large>
+                    <xlarge>
+                        <folder>xlarge</folder>
+                        <width>1000</width>
+                        <height>1000</height>
+                    </xlarge>
+                    <xxlarge>
+                        <folder>xxlarge</folder>
+                        <width>1300</width>
+                        <height>1300</height>
+                    </xxlarge>
+                    <xxxlarge>
+                        <folder>xxxlarge</folder>
+                        <width>1800</width>
+                        <height>1800</height>
+                    </xxxlarge>
+                </gallery>
+                <slider>
+                    <folder>/files/slider/</folder>
+                </slider>
 		<upload_dir>var/upload</upload_dir>
 		
 		<meta_data>
-			<title>Nowa inwestycja mieszkaniowa - Kukuczki 7</title>
-			<keywords>Partner Capital Group, Kukuczki 7</keywords>
+			<title>Izabela Habur portfolio</title>
+			<keywords>Izabela Habur portfolio</keywords>
 			<description></description>
 		</meta_data>
 		
 		<email>
-			<account>noreply@4people.pl</account>
+			<account>noreply@netiz.pl.pl</account>
 			<passwd>U1fKURg7@OE</passwd>
-			<server>smtp.4people.pl</server>
+			<server>smtp.netiz.pl.pl</server>
 		</email>
 	</core>
 	
@@ -63,10 +105,10 @@
 		<database>
 			<adapter>pdo_mysql</adapter>
 			<params>
-				<host>1358.m.tld.pl</host>
-				<username>admin1358_kukuczki</username>
-				<password>0DpVB5*c31</password>
-				<dbname>baza1358_kukuczki</dbname>
+				<host>22265.m.tld.pl</host>
+				<username>admin65_habur</username>
+				<password>9Mn51D7wV9</password>
+				<dbname>baza65_habur</dbname>
 				<charset>utf8</charset>
 				<prefix></prefix>
 			</params>

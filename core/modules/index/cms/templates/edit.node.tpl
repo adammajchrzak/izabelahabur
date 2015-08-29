@@ -46,7 +46,7 @@
 		{foreach $node_items as $item}
 		<p id="item_{$item@iteration}" class="inline-large-label button-height">
 			<label class="label">{$item._name}{*: [{$item.item_id}] *}</label>
-			<span>{$item._title}</span>
+			{*<span>{$item._title}</span>*}
 			<a href="javascript:;" class="button view-item margin-right" title="{$item.item_id}"><span class="button-icon blue-gradient"><span class="icon-eye"></span></span>zobacz</a>
 			<a href="/cms/index/editnodeitem/{$item.item_id}" class="button edit-item margin-right" title="{$item.item_id}"><span class="button-icon green-gradient"><span class="icon-pencil"></span></span>edytuj</a>
 			<a href="javascript:;" type="button" class="button delete-item" title="{$item.item_id}"><span class="button-icon red-gradient"><span class="icon-trash"></span></span>usuń</a>

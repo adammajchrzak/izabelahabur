@@ -302,7 +302,7 @@ class IndexModel extends Engine_Model
         }
 
         $menu = array($list, $page_level, $page_title);
-        //return $menu;
+        
         return $list;
     }
 

@@ -66,6 +66,14 @@ abstract class Engine_Controller	{
 			}
 			
 			$this->_config->locale	= $locale;
+            
+            $list = $this->_function->getConfiguration();
+            foreach ($list as $value){
+                $const[$value['_key']] = $value;
+            }
+            
+            $this->_config->const = $const;
+            $this->_view->const	  = $this->_config->const;
 		}
 
 		$this->_view->locale	= $locale;

@@ -41,8 +41,8 @@ class formsController extends Engine_Controller	{
 			
 			$mail = new Zend_Mail('utf-8');
 			$mail->setBodyText($body);
-			$mail->setFrom($this->_config->email->account, 'Automat newsletter | kukuczki7.pl');
-			$mail->addTo('majchrzak@4people.pl');
+			$mail->setFrom($this->_config->email->account, 'Automat newsletter');
+			$mail->addTo('');
 			$mail->setSubject($subject);
 			$mail->send();
 			
@@ -81,7 +81,7 @@ class formsController extends Engine_Controller	{
 			$mail = new Zend_Mail('utf-8');
 			$mail->setBodyText($body);
 			$mail->setFrom($this->_config->email->account, 'Automat formularz | pcg.pl');
-			$mail->addTo('biuro@pcg.pl');
+			$mail->addTo('');
 			$mail->setSubject($subject);
 			$mail->send();
 			
@@ -125,7 +125,7 @@ class formsController extends Engine_Controller	{
 			$mail = new Zend_Mail('utf-8');
 			$mail->setBodyText($body);
 			$mail->setFrom($this->_config->email->account, 'Automat formularz | kukuczki7.pl');
-			$mail->addTo('majchrzak@4people.pl');
+			$mail->addTo('');
 			$mail->setSubject($subject);
 			$mail->send();
 			

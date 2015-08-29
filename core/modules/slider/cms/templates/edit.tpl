@@ -36,7 +36,7 @@
 {literal}
 <script>
     $(function () {
-        CKEDITOR.replace('_description');
+        CKEDITOR.replace('_description', { height: '200px'});
     });
 </script>	
 {/literal}

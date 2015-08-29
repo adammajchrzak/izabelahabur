@@ -44,8 +44,6 @@ class indexController extends Engine_Controller
 
             $this->_view->parent_page = $parent_page;
             $this->_view->breadcrumb = $this->_cms->getPageBreadcrumb((int) $this->_router->getItemSegments(2), $this->_config->current_locale);
-            // $this->_view->submenu	=	$this->_cms->getPagemenu((int)$parent_page['page_id'], '', $this->_config->current_locale);
-            $this->_view->submenu = $this->_cms->getPagemenu((int) $this->_router->getItemSegments(2), '', $this->_config->current_locale);
 
             if ($page_details['_metatitle'] != '') {
                 $this->_head->title = $page_details['_metatitle'];
@@ -100,23 +98,48 @@ class indexController extends Engine_Controller
     public function portfolio ()
     {
         
+        $page_details = array('node_code' => 'portfolio');
+        
         $this->_view->submenu = $this->_gallery->getGalleryCategoryList('pl', 1);
         
         if ($this->_router->getItemSegments(2)) {           
             
             $code = $this->_router->getItemSegments(2);
             
+            $page_details['_code'] = $code;
+            
+            $this->_view->page_details = $page_details;
+            
             if($code === 'tags') {
                 
                 $this->_view->list = $this->_gallery->getRandomPictureFromTags(strtoupper($this->_router->getItemSegments(3)));
+                $this->_view->category = array(
+                    '_title' => $this->_config->const->_page_header->_value, 
+                    '_description' => $this->_config->const->_page_description->_description
+                );
                 $this->_engine->setToRender('portfolio.tpl');
+            } else if ($code === 'latest')  {
+                $this->_view->list = $this->_gallery->getRandomPictureFromLatest(strtoupper($this->_router->getItemSegments(3)));
+                $this->_view->category = array(
+                    '_title' => $this->_config->const->_page_header->_value, 
+                    '_description' => $this->_config->const->_page_description->_description
+                );
+                $this->_engine->setToRender('portfolio.tpl');
+                
+            } else if ($code === 'featured')  {
+                $this->_view->list = $this->_gallery->getRandomPictureFromFeatured(strtoupper($this->_router->getItemSegments(3)));
+                $this->_view->category = array(
+                    '_title' => $this->_config->const->_page_header->_value, 
+                    '_description' => $this->_config->const->_page_description->_description
+                );
+                $this->_engine->setToRender('portfolio.tpl');
+                
             } else {
             
                 if($this->_router->getItemSegments(3)) {
                     $gallery = $this->_gallery->getGalleryDetailsByCode($this->_router->getItemSegments(3));
                     $this->_view->gallery = $gallery;
                     $this->_view->list = $this->_gallery->getPictureForGalleryList($gallery['gallery_id']);
-
 
                     $category = $this->_gallery->getCategoryDetailsByCode($this->_router->getItemSegments(2));
                     $this->_view->category = $category;
@@ -132,7 +155,15 @@ class indexController extends Engine_Controller
                     $this->_engine->setToRender('portfolio.tpl');
                 }
             }
+        } else {
             
+            $this->_view->list = $this->_gallery->getPictureFromLevel1();
+            $this->_view->category = array(
+                '_title' => $this->_config->const->_page_header->_value, 
+                '_description' => $this->_config->const->_page_description->_description
+            );
+            
+            $this->_engine->setToRender('portfolio.tpl');
         }
     }
 }

@@ -17,8 +17,8 @@
         <ul id="access" class="children-tooltip">
             <li></li>
             <li></li>
-            <li><a href="http://www.4people.pl" title="4people.pl - agencja interaktywna"><span class="icon-user"></span></a></li>
-            <li><a href="http://www.pcg.pl/{$router->getUrl('cms','auth','logout')}" title="wyloguj"><span class="icon-extract"></span></a></li>
+            <li><a href="http://www.netiz.pl" title="netiz.pl - agencja interaktywna"><span class="icon-user"></span></a></li>
+            <li><a href="{$_SERVER['HTTP_HOST']}/{$router->getUrl('cms','auth','logout')}" title="wyloguj"><span class="icon-extract"></span></a></li>
         </ul>
         <section class="navigable" id="doc-menu">
             <ul class="big-menu">
@@ -27,35 +27,9 @@
                 <li><a href="/{$router->getUrl('cms','index','tree')}" title="Lista stron">Lista stron</a></li>
                 <li class="title-menu">Moduły</li>
                 <li class="with-right-arrow">
-                    <span>Cennik</span>
+                    <span>Blog</span>
                     <ul class="big-menu">
-                        <li class="title-menu">Lista lokali</li>
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','price',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                        <li class="title-menu">Piętra</li>  
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','price','category',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                    </ul>
-                </li>
-                <li class="with-right-arrow">
-                    <span>Załaczniki</span>
-                    <ul class="big-menu">
-                        <li class="title-menu">Lista lokali</li>
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','attachment',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                        <li class="title-menu">Piętra</li>  
-                            {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','price','category',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                    </ul>
-                </li>
-                <li class="with-right-arrow">
-                    <span>Aktualności</span>
-                    <ul class="big-menu">
-                        <li class="title-menu">Lista aktualności</li>
+                        <li class="title-menu">Lista wpisów</li>
                             {foreach from=$locale_list item=ll}
                             <li><a href="/{$router->getUrl('cms','news',$ll.lang_code)}">{$ll.lang_name}</a></li>
                             {/foreach}

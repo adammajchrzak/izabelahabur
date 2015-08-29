@@ -35,12 +35,13 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 45px;
-  background-color: #f5f5f5; }
+  background-color: #ffffff;
+  z-index: 1000; }
   .footer ul li {
     margin-top: 15px; }
     .footer ul li a {
       text-decoration: none;
-      color: #000000; }
+      color: #4c4c4c; }
     .footer ul li a:hover {
       text-decoration: underline; }
 
@@ -50,27 +51,26 @@ body {
 #page-top {
   height: 105px; }
 
-#page-logo {
-  padding: 30px 0px 0px 30px; }
-  #page-logo a {
-    text-decoration: none;
-    color: #000000; }
-    #page-logo a h3 {
-      font-size: 36px;
-      font-weight: 800;
-      float: right;
-      padding: 0px;
-      margin: 0px; }
+#page-logo a {
+  text-decoration: none;
+  color: #000000; }
+  #page-logo a img {
+    float: left;
+    margin-right: 10px; }
+  #page-logo a h3 {
+    font-family: "DINRoundProBlack";
+    float: left;
+    padding: 0px;
+    margin: 0px; }
 
 #page-menu {
-  padding: 45px 30px 0px 0px; }
+  padding: 40px 30px 0px 0px; }
   #page-menu li {
-    margin: 0px;
-    margin-left: 10px;
+    margin: 0px 0px 0px 15px;
     padding: 0px;
     font-size: 24px;
     line-height: 28px;
-    font-weight: 400; }
+    font-family: "DINRoundProMedium"; }
     #page-menu li a {
       color: #000000; }
     #page-menu li ul {
@@ -79,14 +79,21 @@ body {
       position: absolute;
       display: none; }
       #page-menu li ul li {
-        margin: 0px;
+        margin: 0px 0px 0px 5px;
         padding: 0px;
         font-size: 14px; }
+  #page-menu li.active {
+    text-decoration: underline; }
+    #page-menu li.active ul {
+      display: block; }
   #page-menu li:hover ul {
     display: block; }
 
 #page-social {
-  padding: 15px 0px 0px 0px; }
+  padding: 15px 0px 0px 0px;
+  width: 70px; }
+  #page-social img {
+    padding: 0px 0px 10px 0px; }
 
 #page-header-row {
   background-image: url(/img/page-header-bg.png);
@@ -94,19 +101,71 @@ body {
 
 #page-slogan {
   color: #ffffff;
-  margin-left: 100px; }
+  margin-left: 35px;
+  width: 750px; }
   #page-slogan h1 {
     font-size: 24px; }
   #page-slogan div {
     font-size: 18px; }
 
+.page-white-spacer {
+  height: 10px;
+  background-color: #ffffff; }
+
 #page-picture-row {
   overflow: hidden;
-  padding: 0px !important; }
+  padding: 0px !important;
+  margin: 0px !important; }
 
 #page-picture {
-  max-height: 500px; }
+  padding: 0px !important;
+  margin: 0px !important; }
+  #page-picture div {
+    padding: 0px !important;
+    margin: 0px !important; }
+    #page-picture div .item {
+      padding: 0px !important;
+      margin: 0px !important; }
 
+#breadcrumbs {
+  margin-top: 15px;
+  font-size: 14px; }
+  #breadcrumbs a {
+    text-decoration: none; }
+  #breadcrumbs a:hover {
+    text-decoration: underline; }
+
+#content-area {
+  margin-top: 40px;
+  margin-bottom: 50px; }
+  #content-area .text-area {
+    font-size: 16px; }
+
+.carousel .item {
+  width: 100%;
+  /*slider width*/
+  max-height: 600px;
+  /*slider height*/
+  margin: 0px !important;
+  padding: 0px !important; }
+
+.carousel .item img {
+  width: 100%;
+  /*img width*/
+  padding: 0px;
+  margin: 0px; }
+
+/*add some makeup*/
+.carousel .carousel-control {
+  background: none;
+  border: none;
+  top: 50%; }
+
+/*full width container*/
+@media (max-width: 767px) {
+  .block {
+    margin-left: -20px;
+    margin-right: -20px; } }
 #portfolio-images {
   margin-top: 10px;
   /* Prevent vertical gaps */
@@ -122,7 +181,7 @@ body {
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
-  padding: 0px 3px 10px 3px;
+  padding: 0px 10px 10px 0px;
   cursor: pointer; }
 
 .grayscale {
@@ -137,19 +196,38 @@ body {
   filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0'/></filter></svg>#grayscale");
   -webkit-filter: grayscale(0%); }
 
+.tooltips {
+  position: relative; }
+
 #portfolio-tooltip {
   display: block;
   width: 240px;
   height: 50px;
-  background-color: #b14057;
-  opacity: 0.7;
+  background-color: #d1334c;
+  opacity: 0.9;
   color: #ffffff; }
   #portfolio-tooltip a {
-    color: #ffffff; }
+    color: #ffffff;
+    text-decoration: none; }
     #portfolio-tooltip a h4 {
       font-family: "DINRoundProBold";
-      font-size: 13px;
-      padding: 10px 0px 0px 5px; }
+      font-size: 18px;
+      padding: 7px 0px 0px 20px; }
+
+.portfolio-tooltip {
+  display: block;
+  width: 240px;
+  height: 50px;
+  background-color: #d1334c;
+  opacity: 0.9;
+  color: #ffffff; }
+  .portfolio-tooltip a {
+    color: #ffffff;
+    text-decoration: none; }
+    .portfolio-tooltip a h4 {
+      font-family: "DINRoundProBold";
+      font-size: 18px;
+      padding: 7px 0px 0px 20px; }
 
 .portfolio-box {
   font-family: "DINRoundProBold";
@@ -166,45 +244,58 @@ body {
     column-count: 4; } }
 @media (max-width: 1000px) {
   #portfolio-images {
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3; } }
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4; } }
 @media (max-width: 800px) {
+  #portfolio-images {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4; } }
+@media (max-width: 400px) {
   #portfolio-images {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2; } }
-@media (max-width: 400px) {
-  #portfolio-images {
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1; } }
-#sidebar-left ul li, #sidebar-right ul li {
-  font-size: 12px; }
-  #sidebar-left ul li a, #sidebar-right ul li a {
-    color: #000000;
-    text-decoration: none; }
-  #sidebar-left ul li a:hover, #sidebar-right ul li a:hover {
-    text-decoration: underline; }
-#sidebar-left ul li:before, #sidebar-right ul li:before {
-  content: "\03E \0020"; }
+#sidebar-left ul, #sidebar-right ul {
+  margin: 0px;
+  padding: 0px; }
+  #sidebar-left ul li, #sidebar-right ul li {
+    font-size: 12px;
+    line-height: 18px; }
+    #sidebar-left ul li a, #sidebar-right ul li a {
+      color: #000000;
+      text-decoration: none;
+      font-family: "DINRoundProBold"; }
+    #sidebar-left ul li a:hover, #sidebar-right ul li a:hover {
+      text-decoration: underline; }
+  #sidebar-left ul li:before, #sidebar-right ul li:before {
+    content: "\03E \0020"; }
+
+#sidebar-right, #sidebar-left {
+  margin-top: 15px; }
+  #sidebar-right h4, #sidebar-left h4 {
+    font-size: 18px;
+    font-family: "DINRoundProBold"; }
 
 #sidebar-right h4, #sidebar-left h4 {
-  font-size: 18px;
-  font-family: "DINRoundProBold"; }
+  margin: 17px 0px 0px 20px; }
+#sidebar-right ul, #sidebar-left ul {
+  margin: 15px 0px 0px 20px; }
 
 .sidebar-header-field {
-  background-image: url(/img/page-header-bg.png); }
+  background-color: #d1334c;
+  opacity: 0.5; }
   .sidebar-header-field h3 {
     color: #ffffff;
     font-size: 18px;
     font-family: "DINRoundProBold";
-    padding: 10px; }
+    padding: 25px 25px 35px 25px; }
     .sidebar-header-field h3 a {
       color: #ffffff; }
 
 #session-images {
-  margin-top: 10px;
+  margin-top: 35px;
   /* Prevent vertical gaps */
   line-height: 0;
   -webkit-column-count: 4;
@@ -218,22 +309,26 @@ body {
   /* Just in case there are inline attributes */
   width: 100% !important;
   height: auto !important;
-  padding: 0px 3px 10px 3px;
+  padding: 0px 6px 6px 0px;
   cursor: pointer; }
 
 #session-tooltip {
   display: block;
   width: 240px;
   height: 50px;
-  background-color: #b14057;
-  opacity: 0.7;
+  background-color: #d1334c;
+  opacity: 0.9;
   color: #ffffff; }
   #session-tooltip a {
     color: #ffffff; }
     #session-tooltip a h4 {
       font-family: "DINRoundProBold";
       font-size: 18px;
-      padding: 10px 0px 0px 5px; }
+      padding: 10px 0px 0px 16px; }
+
+.session-description {
+  font-size: 14px !important;
+  font-family: "DINRoundProMedium"; }
 
 @media (max-width: 1200px) {
   #session-images {
@@ -242,18 +337,176 @@ body {
     column-count: 4; } }
 @media (max-width: 1000px) {
   #session-images {
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3; } }
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4; } }
 @media (max-width: 800px) {
+  #session-images {
+    -moz-column-count: 4;
+    -webkit-column-count: 4;
+    column-count: 4; } }
+@media (max-width: 400px) {
   #session-images {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2; } }
-@media (max-width: 400px) {
-  #session-images {
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1; } }
+/* 
+    Created on : 2015-06-18, 10:37:23
+    Author     : Adam Majchrzak
+*/
+.subpage_news_section {
+  margin-top: 50px; }
+  .subpage_news_section .subpage_news_content div {
+    font-size: 14px; }
+
+.subpage_news_details .subpage_news_content {
+  font-size: 14px; }
+.subpage_news_details .news-back {
+  clear: both;
+  margin-top: 40px; }
+
+/* 
+    Author     : Adam Majchrzak
+*/
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 320px) {
+  #page-logo {
+    padding: 10px 0px 0px 10px;
+    margin-bottom: 20px; }
+    #page-logo h3 {
+      padding: 10px 0 0 0 !important;
+      font-size: 24px; } }
+@media (max-width: 768px) {
+  #page-top {
+    height: 125px; }
+
+  #page-logo {
+    padding: 10px 0px 0px 10px;
+    margin-bottom: 10px;
+    clear: both;
+    display: inline-block; }
+    #page-logo h3 {
+      padding: 10px 0 0 0 !important;
+      font-size: 24px; }
+
+  #page-menu {
+    clear: both;
+    text-align: left;
+    padding: 0px; }
+    #page-menu li {
+      margin: 0px;
+      margin-left: 10px;
+      padding: 0px;
+      font-size: 16px;
+      line-height: 18px;
+      font-family: "DINRoundProMedium"; }
+      #page-menu li ul {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        display: none; }
+        #page-menu li ul li {
+          margin: 0px;
+          padding: 0px;
+          font-size: 10px; }
+
+  #page-slogan {
+    margin-left: 0px; }
+    #page-slogan h1 {
+      font-size: 24px; }
+    #page-slogan div {
+      font-size: 18px; } }
+@media (min-width: 768px) and (max-width: 992px) {
+  #page-logo {
+    padding: 30px 0px 0px 30px; }
+    #page-logo h3 {
+      padding: 10px 0 0 0 !important;
+      font-size: 24px; }
+
+  #page-menu {
+    padding: 10px 0px 0px 0px; }
+    #page-menu li {
+      margin: 0px;
+      margin-left: 10px;
+      padding: 0px;
+      font-size: 20px;
+      line-height: 28px;
+      font-family: "DINRoundProMedium"; }
+      #page-menu li ul {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        display: none; }
+        #page-menu li ul li {
+          margin: 0px;
+          padding: 0px;
+          font-size: 12px; } }
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+  #page-logo {
+    padding: 30px 0px 0px 30px; }
+    #page-logo h3 {
+      padding: 5px 0 0 0 !important;
+      font-size: 30px; } }
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #page-logo {
+    padding: 30px 0px 0px 30px; }
+    #page-logo h3 {
+      font-size: 40px; } }
+/* 
+    Created on : 2015-07-08, 09:06:23
+    Author     : Adam Majchrzak
+*/
+/*
+  Bootstrap Carousel Fade Transition (for Bootstrap 3.3.x)
+  CSS from:       http://codepen.io/transportedman/pen/NPWRGq
+  and:            http://stackoverflow.com/questions/18548731/bootstrap-3-carousel-fading-to-new-slide-instead-of-sliding-to-new-slide
+  Inspired from:  http://codepen.io/Rowno/pen/Afykb 
+*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 1.5s; }
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1; }
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1; }
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1; }
+
+.carousel-fade .carousel-control {
+  z-index: 2; }
+
+/*
+  WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+  Need to override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+  .carousel-fade .carousel-inner > .item.next,
+  .carousel-fade .carousel-inner > .item.active.right {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+
+  .carousel-fade .carousel-inner > .item.prev,
+  .carousel-fade .carousel-inner > .item.active.left {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+
+  .carousel-fade .carousel-inner > .item.next.left,
+  .carousel-fade .carousel-inner > .item.prev.right,
+  .carousel-fade .carousel-inner > .item.active {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
 
 /*# sourceMappingURL=style.css.map */
