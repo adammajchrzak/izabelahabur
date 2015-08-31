@@ -48,7 +48,7 @@
         h4 {
             font-family: $font-basic-bold;
             font-size: 18px;
-            padding: 7px 0px 0px 20px;
+            padding: 7px 0px 10px 20px;
         }
     }
 }
@@ -66,7 +66,7 @@
         h4 {
             font-family: $font-basic-bold;
             font-size: 18px;
-            padding: 7px 0px 0px 20px;
+            padding: 7px 0px 10px 20px;
         }
     }
 }
@@ -75,13 +75,13 @@
     font-family: $font-basic-bold;
     font-size: 18px;
     color: #ffffff;
-    padding: 10px;
+    padding-top: 15px;
     a {
        color: #ffffff;
     }
 }
 
-@media (max-width: 1200px) {
+/*@media (max-width: 1200px) {
   #portfolio-images {
   -moz-column-count:    4;
   -webkit-column-count: 4;
@@ -108,4 +108,4 @@
   -webkit-column-count: 2;
   column-count:         2;
   }
-}
+}*/

@@ -9,7 +9,7 @@
 
 <div class="page-white-spacer"></div>
 
-<div id="page-picture-row" class="container-fluid">
+<div id="page-picture-row" class="container">
     <div id="page-picture" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner" role="listbox2">
         {foreach $slider as $item}

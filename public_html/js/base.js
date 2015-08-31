@@ -53,6 +53,26 @@ $(document).ready(function() {
             'padding' : '10px'
         });
         
+        if($(this).attr('id') == 'portfolio-box1') {
+        
+            $('#portfolio-box1-tooltip').css({
+                'position': 'absolute',
+                'top' : parseInt(id.top - 10) + 'px',
+                'left' : parseInt(id.left + 6) + 'px',
+                'width' : dimW,
+                'padding' : '10px'
+            });
+        }
+        if($(this).attr('id') == 'portfolio-box2') {
+            $('#portfolio-box2-tooltip').css({
+                'position': 'absolute',
+                'top' : parseInt(id.top - 10) + 'px',
+                'left' : parseInt(id.left + 6) + 'px',
+                'width' : dimW,
+                'padding' : '10px'
+            });
+        }
+        
         var tHtml = '<a href="' + $(this).attr('data-url') + '"><h4>' + $(this).attr('alt') + '</h4></a>';
         $('#' + $(this).attr('id') + '-tooltip').html(tHtml);
     });

@@ -114,18 +114,7 @@ body {
 
 #page-picture-row {
   overflow: hidden;
-  padding: 0px !important;
-  margin: 0px !important; }
-
-#page-picture {
-  padding: 0px !important;
-  margin: 0px !important; }
-  #page-picture div {
-    padding: 0px !important;
-    margin: 0px !important; }
-    #page-picture div .item {
-      padding: 0px !important;
-      margin: 0px !important; }
+  padding: 0px !important; }
 
 #breadcrumbs {
   margin-top: 15px;
@@ -140,26 +129,6 @@ body {
   margin-bottom: 50px; }
   #content-area .text-area {
     font-size: 16px; }
-
-.carousel .item {
-  width: 100%;
-  /*slider width*/
-  max-height: 600px;
-  /*slider height*/
-  margin: 0px !important;
-  padding: 0px !important; }
-
-.carousel .item img {
-  width: 100%;
-  /*img width*/
-  padding: 0px;
-  margin: 0px; }
-
-/*add some makeup*/
-.carousel .carousel-control {
-  background: none;
-  border: none;
-  top: 50%; }
 
 /*full width container*/
 @media (max-width: 767px) {
@@ -212,7 +181,7 @@ body {
     #portfolio-tooltip a h4 {
       font-family: "DINRoundProBold";
       font-size: 18px;
-      padding: 7px 0px 0px 20px; }
+      padding: 7px 0px 10px 20px; }
 
 .portfolio-tooltip {
   display: block;
@@ -227,36 +196,44 @@ body {
     .portfolio-tooltip a h4 {
       font-family: "DINRoundProBold";
       font-size: 18px;
-      padding: 7px 0px 0px 20px; }
+      padding: 7px 0px 10px 20px; }
 
 .portfolio-box {
   font-family: "DINRoundProBold";
   font-size: 18px;
   color: #ffffff;
-  padding: 10px; }
+  padding-top: 15px; }
   .portfolio-box a {
     color: #ffffff; }
 
-@media (max-width: 1200px) {
+/*@media (max-width: 1200px) {
   #portfolio-images {
-    -moz-column-count: 4;
-    -webkit-column-count: 4;
-    column-count: 4; } }
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
 @media (max-width: 1000px) {
   #portfolio-images {
-    -moz-column-count: 4;
-    -webkit-column-count: 4;
-    column-count: 4; } }
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
 @media (max-width: 800px) {
   #portfolio-images {
-    -moz-column-count: 4;
-    -webkit-column-count: 4;
-    column-count: 4; } }
+  -moz-column-count:    4;
+  -webkit-column-count: 4;
+  column-count:         4;
+  }
+}
 @media (max-width: 400px) {
   #portfolio-images {
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2; } }
+  -moz-column-count:    2;
+  -webkit-column-count: 2;
+  column-count:         2;
+  }
+}*/
 #sidebar-left ul, #sidebar-right ul {
   margin: 0px;
   padding: 0px; }
