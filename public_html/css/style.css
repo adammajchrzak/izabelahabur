@@ -297,6 +297,9 @@ body {
   opacity: 0.9;
   color: #ffffff; }
   #session-tooltip a {
+    display: block;
+    width: 100%;
+    height: 100%;
     color: #ffffff; }
     #session-tooltip a h4 {
       font-family: "DINRoundProBold";

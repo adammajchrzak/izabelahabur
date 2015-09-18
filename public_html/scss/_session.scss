@@ -79,6 +79,9 @@
     opacity: 0.9;
     color: #ffffff;
     a {
+        display: block;
+        width: 100%;
+        height: 100%;
         color: #ffffff;
         h4 {
             font-family: $font-basic-bold;
