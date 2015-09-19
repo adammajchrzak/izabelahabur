@@ -96,5 +96,19 @@ $(document).ready(function() {
         $('#session-tooltip').html(tHtml);
     });
     
-    
+    $('img').on('load', function() {
+        $('#loader').fadeIn({
+            duration: 500
+        });
+    }).each(function() {
+        if(this.complete) {
+            $(this).trigger('load');
+            setTimeout(function(){ 
+                $('img').css({'visibility':'visible'});
+                $('#loader').fadeOut({
+                    duration: 1000
+                });
+            }, 3000);  
+        }
+    });
 });

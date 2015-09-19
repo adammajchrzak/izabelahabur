@@ -1,7 +1,7 @@
-<div id="page-top-row">
+<div id="page-top-row" class="row">
     <div id="page-top" class="container">
         <div id="page-logo" class="col-lg-4 col-md-4 col-sm-12 text-left">
-            <a href="/" title="Izabela Habur Photographer :: portfolio"><img src="/img/page-logo.png" alt="Izabela Habur Photographer :: portfolio"/> <h3>HABUR IMAGES</h3></a>
+            <a href="/" title="Izabela Habur Photographer :: portfolio"><img src="/img/page-logo.png" alt="Izabela Habur Photographer :: portfolio"/></a>
         </div>
         <div id="page-menu" class="col-lg-7 col-md-7 col-sm-12 text-right">
             <ul class="list-inline">

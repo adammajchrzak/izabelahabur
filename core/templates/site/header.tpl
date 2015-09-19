@@ -20,5 +20,22 @@
     {/if}
 </head>
 <body>
-    <div class="container-fluid2">
+<div id="loader">
+    <div class="small1">
+      <div class="small ball smallball1"></div>
+      <div class="small ball smallball2"></div>
+      <div class="small ball smallball3"></div>
+      <div class="small ball smallball4"></div>
+    </div>
+    <div class="small2">
+      <div class="small ball smallball5"></div>
+      <div class="small ball smallball6"></div>
+      <div class="small ball smallball7"></div>
+      <div class="small ball smallball8"></div>
+    </div>
+    <div class="bigcon">
+      <div class="big ball"></div>
+    </div>
+  </div>    
+    <div class="container-fluid">
             {include file="templates/site/page.main.menu.tpl"}

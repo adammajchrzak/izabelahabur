@@ -1,4 +1,4 @@
-<div id="page-header-row">
+<div id="page-header-row" class="row">
     <div id="page-header" class="container">
         <div id="page-slogan">
             <h2>{$const->_page_header->_value}</h2>
