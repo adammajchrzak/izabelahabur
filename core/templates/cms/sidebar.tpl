@@ -61,14 +61,6 @@
                             {/foreach}
                     </ul>
                 </li>
-                <li class="with-right-arrow">
-                    <span>Formularze</span>
-                    <ul class="big-menu">
-                        {foreach from=$locale_list item=ll}
-                            <li><a href="/{$router->getUrl('cms','forms',$ll.lang_code)}">{$ll.lang_name}</a></li>
-                            {/foreach}
-                    </ul>
-                </li>
                 <li class="title-menu">Administracja</li>
                 <li><a href="/{$router->getUrl('cms', 'user')}" title="Użytkownicy">Użytkownicy</a></li>
                 <li><a href="/{$router->getUrl('cms', 'configuration')}" title="Konfiguracja">Konfiguracja</a></li>

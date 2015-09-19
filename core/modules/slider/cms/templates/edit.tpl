@@ -1,7 +1,7 @@
 <div class="with-padding">
     <form id="form-edit-gallery" name="form-edit-gallery" method="post" action="/{$router->getUrl('cms','slider', 'edit')}">
 
-        <h2 class="thin float-left">Edytuj galerię</h2>
+        <h2 class="thin float-left">Edytuj element</h2>
 
         <div class="float-right">
             <button type="submit" class="button glossy mid-margin-right"><span class="button-icon"><span class="icon-tick"></span></span>zapisz zmiany</button>

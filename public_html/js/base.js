@@ -96,7 +96,7 @@ $(document).ready(function() {
         $('#session-tooltip').html(tHtml);
     });
     
-    $('img').on('load', function() {
+    $('#portfolio-images img, #session-images img').on('load', function() {
         $('#loader').fadeIn({
             duration: 500
         });
