@@ -105,6 +105,8 @@ $(document).ready(function() {
             $(this).trigger('load');
             setTimeout(function(){ 
                 $('img').css({'visibility':'visible'});
+                $('.session-description').css({'visibility':'visible'});
+                $('#sidebar-right, #sidebar-left').css({'visibility':'visible'});
                 $('#loader').fadeOut({
                     duration: 1000
                 });

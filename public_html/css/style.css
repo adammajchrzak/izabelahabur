@@ -374,6 +374,7 @@ body {
     content: "\03E \0020"; }
 
 #sidebar-right, #sidebar-left {
+  visibility: hidden;
   margin-top: 15px; }
   #sidebar-right h4, #sidebar-left h4 {
     font-size: 18px;
@@ -432,6 +433,7 @@ body {
       padding: 2px 0px 0px 15px; }
 
 .session-description {
+  visibility: hidden;
   font-size: 14px !important;
   font-family: "DINRoundProMedium"; }
 
