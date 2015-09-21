@@ -101,6 +101,8 @@
                 <th>iStock Link</th>
                 <th class="one-column">Portfolio</th>
                 <th class="one-column">Kategoria</th>
+                <th class="one-column">Latest</th>
+                <th class="one-column">Featured</th>
             </tr>
         {foreach item=tree name=tree from=$picture_list}
             <tr>
@@ -110,6 +112,8 @@
                 </td>
                 <td><input id="level1{$tree.picture_id}" name="level1{$tree.picture_id}" type="checkbox" value="1"{if $tree._level1 == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" /></td>
                 <td><input id="level2{$tree.picture_id}" name="level2{$tree.picture_id}" type="checkbox" value="1"{if $tree._level2 == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" /></td>
+                <td><input id="latest{$tree.picture_id}" name="latest{$tree.picture_id}" type="checkbox" value="1"{if $tree._latest == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" /></td>
+                <td><input id="featured{$tree.picture_id}" name="featured{$tree.picture_id}" type="checkbox" value="1"{if $tree._featured == '1'} checked="checked"{/if} class="switch" data-text-on="TAK" data-text-off="NIE" /></td>
             </tr>
         {/foreach}
         </table>

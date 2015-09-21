@@ -324,6 +324,8 @@ class galleryController extends Engine_Controller	{
                 
                 $update['_level1'] = (int)$data['level1'.$imageId];
                 $update['_level2'] = (int)$data['level2'.$imageId];
+                $update['_latest'] = (int)$data['latest'.$imageId];
+                $update['_featured'] = (int)$data['featured'.$imageId];
                 
                 $update['picture_id'] = $imageId;
                 
