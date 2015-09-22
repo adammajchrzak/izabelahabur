@@ -515,6 +515,16 @@ class galleryController extends Engine_Controller	{
             if (!Imagejpeg($final, $destination, $quality)) {
                 return false;
             }
+
+			$image = new Imagick($final);
+			$image->setProperty('Author', 'Izabela Habur');
+
+			$image->writeImage ("test_0.jpg"); // fails with no error message
+			//instead
+			$image->setImageFormat ("jpeg");
+			file_put_contents ("test_1.jpg", $image); // works, or:
+			$image->imageWriteFile (fopen ("test_2.jpg", "wb")); //also works
+
         }
         
         return false;
