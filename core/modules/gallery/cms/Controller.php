@@ -107,6 +107,36 @@ class galleryController extends Engine_Controller	{
 		
 		exit();
     }
+    
+    public function ggmove()
+    {
+        if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isAjaxRequest())	{
+			$this->_gallery->moveGalleryTypeInStructure($_REQUEST);
+		}
+		
+		exit();
+    }
+    
+    
+    public function sort()
+    {
+        if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isAjaxRequest())	{
+			$this->_gallery->moveGalleryInStructure($_REQUEST);
+		}
+		$this->_view->gallery_type      =	$this->_router->getItemSegments(3);
+		$this->_view->picture_list      =	$this->_gallery->getPictureForGalleryTypeList($this->_router->getItemSegments(3));
+		
+		print $this->_view->render('modules/gallery/cms/templates/sort.tpl');
+		exit();
+    }
 	
     
 	public function add()	{
@@ -115,7 +145,7 @@ class galleryController extends Engine_Controller	{
 			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
 		}
         
-		$gallery_details['lang_code']	=	$this->_session->lang_code;
+		$gallery_details['lang_code']	=	'pl';
         
 		$this->_view->gallery_details	=	$gallery_details;
         $this->_view->category_list	    =	$this->_gallery->getGalleryCategoryList($this->_session->lang_code);
@@ -306,6 +336,24 @@ class galleryController extends Engine_Controller	{
 	}
     
     
+    public function links()	{
+		
+		if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		$this->_view->gallery_details = $this->_gallery->getGalleryDetails((int)$this->_router->getItemSegments(3));
+		
+		$this->_view->picture_list      =	$this->_gallery->getPictureForGalleryList((int)$this->_router->getItemSegments(3));
+		$this->_view->category_list	    =	$this->_gallery->getGalleryCategoryList($this->_session->lang_code);
+        $this->_view->gallery_keywords	=	$this->_function->flattenArray($this->_gallery->getKeywordsForGallery((int)$this->_router->getItemSegments(3)), 'keyword_id');
+        $this->_view->keywords          =	$this->_gallery->getKeywordsFullList();
+        
+		print $this->_view->render('modules/gallery/cms/templates/links.tpl');
+		exit();
+	}
+    
+    
     public function editlinks()	{
 		
 		if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
@@ -322,18 +370,34 @@ class galleryController extends Engine_Controller	{
                     $update['istock_link'] = $value;
                 }
                 
-                $update['_level1'] = (int)$data['level1'.$imageId];
-                $update['_level2'] = (int)$data['level2'.$imageId];
+                $update['_level1']   = (int)$data['level1'.$imageId];
+                $update['_level2']   = (int)$data['level2'.$imageId];
+                $update['_latest']   = (int)$data['latest'.$imageId];
+                $update['_featured'] = (int)$data['featured'.$imageId];
                 
                 $update['picture_id'] = $imageId;
                 
                 $this->_gallery->saveImagesLinks($update);
             }
-			$this->_engine->addHttpHeader("Location: /".$this->_router->getUrl('cms#','cms','gallery','edit',$_POST['gallery_id']));
+			$this->_engine->addHttpHeader("Location: /".$this->_router->getUrl('cms#','cms','gallery','links',$_POST['gallery_id']));
 			exit();
 		}
 
 	}
+    
+    
+    public function pmove()
+    {
+        if(	!$this->_acl->isAllowed($this->_auth->getIdentity()->role_code, $this->_engine->getModuleName(), 'edit'))	{
+			$this->_acl->aclMessage($this->_auth->getIdentity()->user_id, __CLASS__, __METHOD__, 'brak uprawnień');
+		}
+		
+		if($this->_router->isAjaxRequest())	{
+			$this->_gallery->movePictureInStructure($_REQUEST);
+		}
+		
+		exit();
+    }
     
     
     
@@ -390,7 +454,7 @@ class galleryController extends Engine_Controller	{
 		}
 		
 		$category_details['category_id']	=	'0';
-		$category_details['lang_code']		=	$this->_session->lang_code;
+		$category_details['lang_code']		=	'pl';
 		$this->_view->category_details		=	$category_details;
 		
 		print $this->_view->render('modules/gallery/cms/templates/category.add.tpl');

@@ -99,7 +99,37 @@ class GalleryModel extends Engine_Model
     {
         $select    =    $this->_db->select()
                                         ->from(array('cgp' => 'cms_gallery_picture'))
-                                        ->where('cgp.gallery_id = ?', (int)$gallery_id);
+                                        ->where('cgp.gallery_id = ?', (int)$gallery_id)
+                                        ->order('picture_order');
+        $result = $this->_db->fetchAll($select);
+        
+        return $result;
+    }
+    
+    public function getPictureForGalleryTypeList($galleryType)
+    {
+        
+        switch($galleryType) {
+            case 'level1':
+                $select = $this->_db->select()
+                    ->from(array('cgp' => 'cms_gallery_picture'))
+                    ->where('cgp._level1 = ?', '1')
+                    ->order('cgp._level1_order');
+                break;
+            case 'latest':
+                $select = $this->_db->select()
+                    ->from(array('cgp' => 'cms_gallery_picture'))
+                    ->where('cgp._latest = ?', '1')
+                    ->order('cgp._latest_order');
+                break;
+            case 'featured':
+                $select = $this->_db->select()
+                    ->from(array('cgp' => 'cms_gallery_picture'))
+                    ->where('cgp._featured = ?', '1')
+                    ->order('cgp._featured_order');
+                break;
+        }
+        
         $result = $this->_db->fetchAll($select);
         
         return $result;
@@ -361,6 +391,63 @@ class GalleryModel extends Engine_Model
     }
     
     
+    public function moveGalleryTypeInStructure($data)
+    {
+		$select = $this->_db->select()
+                ->from(array('cg' => 'cms_gallery_picture'));
+        
+        switch($data['type']) {
+            case 'level1';
+                $select->order('cg._level1_order');
+                $column = '_level1_order';
+                break;
+            case 'latest';
+                $select->order('cg._latest_order');
+                $column = '_latest_order';
+                break;
+            case 'featured';
+                $select->order('cg._featured_order');
+                $column = '_featured_order';
+                break;
+        }
+                
+        
+		$result = $this->_db->fetchAll($select);
+		$y = '0';
+		
+		$beforePage	= array();
+		$afterPage	= array();
+		
+		foreach ($result as $key=>$value)	{
+			if($result[$key]['picture_id'] == $data['item_id'])	{
+				$y = 1;
+			}	elseif ($y == '0')	{
+				array_push($beforePage, $result[$key]['picture_id']);
+			}	else {
+				array_push($afterPage, $result[$key]['picture_id']);
+			}
+		}
+		
+		if($data['direction'] == 'UP')	{
+			array_unshift($afterPage, array_pop($beforePage));
+		}	else {
+			array_push($beforePage, array_shift($afterPage));
+		}
+		
+		array_push($beforePage, $data['item_id']);
+		$pagesList = array_merge($beforePage, $afterPage);
+		
+		$_order = 10;
+		foreach ($pagesList as $key=>$value)	{
+			
+			$this->_db->update("cms_gallery_picture", array($column => $_order), "picture_id='".$value."'");
+			$_order += 10; 
+		}
+		
+		return true;
+    }
+    
+    
     public function addGalleryDetails($data)
     {
         $insert    = array(
@@ -449,6 +536,8 @@ class GalleryModel extends Engine_Model
         $update    = array(
             '_level1'       => (int)$data['_level1'],
             '_level2'       => (int)$data['_level2'],
+            '_latest'       => (int)$data['_latest'],
+            '_featured'     => (int)$data['_featured'],
             'istock_link'   =>  $data['istock_link'],
             '_changed'      =>  date("Y-m-d H:i:s")
         );
@@ -471,6 +560,49 @@ class GalleryModel extends Engine_Model
         $this->_db->delete("cms_gallery_picture", "picture_id = '".(int)$picture_id."'");
 
         return true;
+    }
+    
+    
+    public function movePictureInStructure($data)
+    {
+		$select = $this->_db->select()
+                ->from(array('cgp' => 'cms_gallery_picture'))
+                ->where('cgp.gallery_id = ?', (int)$data['gallery_id'])
+                ->order('cgp.picture_order');
+        
+		$result = $this->_db->fetchAll($select);
+		$y = '0';
+		
+		$beforePage	= array();
+		$afterPage	= array();
+		
+		foreach ($result as $key=>$value)	{
+			if($result[$key]['picture_id'] == $data['item_id'])	{
+				$y = 1;
+			}	elseif ($y == '0')	{
+				array_push($beforePage, $result[$key]['picture_id']);
+			}	else {
+				array_push($afterPage, $result[$key]['picture_id']);
+			}
+		}
+		
+		if($data['direction'] == 'UP')	{
+			array_unshift($afterPage, array_pop($beforePage));
+		}	else {
+			array_push($beforePage, array_shift($afterPage));
+		}
+		
+		array_push($beforePage, $data['item_id']);
+		$pagesList = array_merge($beforePage, $afterPage);
+		
+		$_order = 10;
+		foreach ($pagesList as $key=>$value)	{
+			
+			$this->_db->update("cms_gallery_picture", array('picture_order' => $_order), "picture_id='".$value."'");
+			$_order += 10; 
+		}
+		
+		return true;
     }
     
     public function getKeywordsForGallery($galleryId)

@@ -50,6 +50,10 @@
                             {foreach from=$locale_list item=ll}
                             <li><a href="/{$router->getUrl('cms','gallery','category',$ll.lang_code)}">{$ll.lang_name}</a></li>
                             {/foreach}
+                        <li class="title-menu">Sortowanie</li>
+                            <li><a href="/{$router->getUrl('cms','gallery','sort','level1',$ll.lang_code)}">Portfolio</a></li>
+                            <li><a href="/{$router->getUrl('cms','gallery','sort','latest',$ll.lang_code)}">Latest</a></li>
+                            <li><a href="/{$router->getUrl('cms','gallery','sort','featured',$ll.lang_code)}">Featured</a></li>
                     </ul>
                 </li>
                 <li class="with-right-arrow">
