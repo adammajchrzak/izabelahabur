@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/modules/gallery/cms/templates/sidebar.tpl</file>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/modules/gallery/cms/templates/links.tpl</file>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/modules/gallery/GalleryModel.php</file>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/modules/gallery/cms/templates/edit.tpl</file>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/templates/cms/sidebar.tpl</file>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/configs/dbUpdate.sql</file>
+            <file>file:/D:/Work/IzabelaHabur/izabelahabur.com/www/core/modules/gallery/cms/Controller.php</file>
+        </group>
     </open-files>
 </project-private>
