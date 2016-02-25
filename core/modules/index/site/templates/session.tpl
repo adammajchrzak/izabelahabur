@@ -22,7 +22,7 @@
         <div class="col-lg-6">
             <section id="session-images">
             {foreach $list as $item}
-                <a href="{$item.istock_link}sssss"><img src="{$item.file_dir}/xsmall/{$item.file_name}" alt="BUY THIS PHOTO >>>" data-url="{$item.istock_link}" class="gray"/></a>
+                <a href="{$item.istock_link}"><img src="{$item.file_dir}/xsmall/{$item.file_name}" alt="BUY THIS PHOTO >>>" data-url="{$item.istock_link}" class="gray"/></a>
             {/foreach}
             </section>
             <div class="clearfix"></div>
